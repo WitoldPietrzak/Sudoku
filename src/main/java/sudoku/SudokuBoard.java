@@ -134,24 +134,5 @@ public class SudokuBoard {
         return true;
     }
 
-    /**
-     * Draws the sudoku board.
-     */
-    public final void printBoard() {
-        System.out.print("\n");
-        for (int i = 0; i < sudokuSize; i++) {
-            for (int j = 0; j < sudokuSize; j++) {
-                System.out.print(board[i][j]);
-                if (j % blockSize == 2) {
-                    System.out.print(" ");
-                }
-            }
-            if (i % blockSize == 2) {
-                System.out.print("\n");
-            }
-            System.out.print("\n");
-        }
-    }
-
 }
 

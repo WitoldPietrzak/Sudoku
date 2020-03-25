@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="df4544b5-381f-46f2-9549-46e81c71fef7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/sudoku/BacktrackingSudokuSolver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/sudoku/SudokuSolver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/sudoku/BacktrackingSudokuSolverTest.java" afterDir="false" />
+    <list default="true" id="df4544b5-381f-46f2-9549-46e81c71fef7" name="Default Changelist" comment="Separated SudokuSolver from SudokuBoard. Installed JaCoCO">
+      <change afterPath="$PROJECT_DIR$/checkstyle2020.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sudoku/BacktrackingSudokuSolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sudoku/BacktrackingSudokuSolver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/sudoku/SudokuBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sudoku/SudokuBoard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/sudoku/SudokuBoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/sudoku/SudokuBoardTest.java" afterDir="false" />
     </list>
@@ -48,18 +47,22 @@
     </option>
   </component>
   <component name="ProjectId" id="1ZHVS72DpDhMxErQicQsFfRcsw4" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/FirstJava" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -73,7 +76,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.BacktrackingSudokuSolverTest.testIfNotEqual">
+  <component name="RunManager" selected="JUnit.SudokuBoardTest.testCorrect">
     <configuration name="BacktrackingSudokuSolverTest.solve" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PKZ2" />
       <extension name="coverage">
@@ -155,9 +158,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.BacktrackingSudokuSolverTest.testIfNotEqual" />
-        <item itemvalue="JUnit.BacktrackingSudokuSolverTest.solve" />
         <item itemvalue="JUnit.SudokuBoardTest.testCorrect" />
+        <item itemvalue="JUnit.BacktrackingSudokuSolverTest.solve" />
+        <item itemvalue="JUnit.BacktrackingSudokuSolverTest.testIfNotEqual" />
         <item itemvalue="JUnit.SudokuBoardTest.testIfNotEqual" />
         <item itemvalue="JUnit.SudokuBoardTest" />
       </list>
@@ -175,38 +178,55 @@
       <updated>1584496003350</updated>
       <workItem from="1584496006842" duration="1186000" />
       <workItem from="1585106863678" duration="2413000" />
-      <workItem from="1585110106937" duration="4085000" />
+      <workItem from="1585110106937" duration="7921000" />
     </task>
+    <task id="LOCAL-00001" summary="Separated SudokuSolver from SudokuBoard. Installed JaCoCO">
+      <created>1585115488738</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1585115488738</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Separated SudokuSolver from SudokuBoard. Installed JaCoCO" />
+    <option name="LAST_COMMIT_MESSAGE" value="Separated SudokuSolver from SudokuBoard. Installed JaCoCO" />
   </component>
   <component name="WindowStateProjectService">
     <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser" timestamp="1585113441017">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1585113441017" />
-    <state x="393" y="7" key="CommitChangelistDialog2" timestamp="1585115472102">
+    <state x="393" y="7" key="CommitChangelistDialog2" timestamp="1585115670411">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="393" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1585115472102" />
-    <state width="1493" height="2" key="GridCell.Tab.0.bottom" timestamp="1585115472206">
+    <state x="393" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1585115670411" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1585115990397">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="2" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585115472206" />
-    <state width="1493" height="2" key="GridCell.Tab.0.center" timestamp="1585115472206">
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1585115990397" />
+    <state width="1493" height="260" key="GridCell.Tab.0.bottom" timestamp="1585118426005">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="2" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585115472206" />
-    <state width="1493" height="2" key="GridCell.Tab.0.left" timestamp="1585115472206">
+    <state width="1493" height="260" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585118426005" />
+    <state width="1493" height="260" key="GridCell.Tab.0.center" timestamp="1585118426005">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="2" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585115472206" />
-    <state width="1493" height="2" key="GridCell.Tab.0.right" timestamp="1585115472206">
+    <state width="1493" height="260" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585118426005" />
+    <state width="1493" height="260" key="GridCell.Tab.0.left" timestamp="1585118426005">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="2" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585115472206" />
+    <state width="1493" height="260" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585118426005" />
+    <state width="1493" height="260" key="GridCell.Tab.0.right" timestamp="1585118426005">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="260" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585118426005" />
     <state x="455" y="0" key="SettingsEditor" timestamp="1585109275058">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

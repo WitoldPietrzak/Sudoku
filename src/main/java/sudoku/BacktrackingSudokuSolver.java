@@ -11,15 +11,7 @@ public class BacktrackingSudokuSolver implements SudokuSolver {
         Random random = new Random();
         boolean isThere0 = false;
         for (int i = 0; i < sudoku.getSudokuSize(); i++) {
-            sudoku.set(0, i, (random.nextInt(sudoku.getSudokuSize()) + 1));
-            if (sudoku.get(0, i) == 0) {
-                if (isThere0) {
-                    i--;
-                    continue;
-                } else {
-                    isThere0 = true;
-                }
-            }
+            sudoku.set(0, i, (random.nextInt(sudoku.getSudokuSize()))+1);
             if (!sudoku.checkRow(0)) {
                 i--;
             }
