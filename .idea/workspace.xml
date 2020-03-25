@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="df4544b5-381f-46f2-9549-46e81c71fef7" name="Default Changelist" comment="" />
+    <list default="true" id="df4544b5-381f-46f2-9549-46e81c71fef7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/sudoku/BacktrackingSudokuSolver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/sudoku/SudokuSolver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/sudoku/BacktrackingSudokuSolverTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sudoku/SudokuBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sudoku/SudokuBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/sudoku/SudokuBoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/sudoku/SudokuBoardTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,11 +18,15 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="package-info" />
+        <option value="Class" />
+        <option value="Interface" />
         <option value="JUnit5 Test Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
@@ -28,8 +40,15 @@
         <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
       </MavenGeneralSettings>
     </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="jdkForImporter" value="11 (2)" />
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
   </component>
   <component name="ProjectId" id="1ZHVS72DpDhMxErQicQsFfRcsw4" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -41,10 +60,10 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="project.structure.last.edited" value="SDKs" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="flex.compiler" />
+    <property name="settings.editor.selected.configurable" value="preferences.externalDependencies" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -54,7 +73,39 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.BacktrackingSudokuSolverTest.testIfNotEqual">
+    <configuration name="BacktrackingSudokuSolverTest.solve" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PKZ2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sudoku.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="sudoku" />
+      <option name="MAIN_CLASS_NAME" value="sudoku.BacktrackingSudokuSolverTest" />
+      <option name="METHOD_NAME" value="solve" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BacktrackingSudokuSolverTest.testIfNotEqual" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PKZ2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sudoku.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="sudoku" />
+      <option name="MAIN_CLASS_NAME" value="sudoku.BacktrackingSudokuSolverTest" />
+      <option name="METHOD_NAME" value="testIfNotEqual" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SudokuBoardTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PKZ2" />
       <extension name="coverage">
@@ -70,8 +121,44 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SudokuBoardTest.testCorrect" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PKZ2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sudoku.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="sudoku" />
+      <option name="MAIN_CLASS_NAME" value="sudoku.SudokuBoardTest" />
+      <option name="METHOD_NAME" value="testCorrect" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SudokuBoardTest.testIfNotEqual" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PKZ2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sudoku.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="sudoku" />
+      <option name="MAIN_CLASS_NAME" value="sudoku.SudokuBoardTest" />
+      <option name="METHOD_NAME" value="testIfNotEqual" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BacktrackingSudokuSolverTest.testIfNotEqual" />
+        <item itemvalue="JUnit.BacktrackingSudokuSolverTest.solve" />
+        <item itemvalue="JUnit.SudokuBoardTest.testCorrect" />
+        <item itemvalue="JUnit.SudokuBoardTest.testIfNotEqual" />
         <item itemvalue="JUnit.SudokuBoardTest" />
       </list>
     </recent_temporary>
@@ -86,7 +173,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1584496003350</updated>
-      <workItem from="1584496006842" duration="558000" />
+      <workItem from="1584496006842" duration="1186000" />
+      <workItem from="1585106863678" duration="2413000" />
+      <workItem from="1585110106937" duration="4085000" />
     </task>
     <servers />
   </component>
@@ -94,25 +183,41 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1584496303049">
+    <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser" timestamp="1585113441017">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584496303049" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1584496303049">
+    <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1585113441017" />
+    <state x="393" y="7" key="CommitChangelistDialog2" timestamp="1585115472102">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1584496303049" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1584496303049">
+    <state x="393" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1585115472102" />
+    <state width="1493" height="2" key="GridCell.Tab.0.bottom" timestamp="1585115472206">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1584496303049" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1584496303049">
+    <state width="1493" height="2" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585115472206" />
+    <state width="1493" height="2" key="GridCell.Tab.0.center" timestamp="1585115472206">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1584496303049" />
-    <state x="529" y="196" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1584496248538">
+    <state width="1493" height="2" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585115472206" />
+    <state width="1493" height="2" key="GridCell.Tab.0.left" timestamp="1585115472206">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="529" y="196" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1536.824@0.0.1536.824" timestamp="1584496248538" />
+    <state width="1493" height="2" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585115472206" />
+    <state width="1493" height="2" key="GridCell.Tab.0.right" timestamp="1585115472206">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="2" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585115472206" />
+    <state x="455" y="0" key="SettingsEditor" timestamp="1585109275058">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="455" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1585109275058" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1585110106906">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1585110106906" />
+    <state x="529" y="196" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1585114892612">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="529" y="196" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1536.824@0.0.1536.824" timestamp="1585114892612" />
   </component>
 </project>

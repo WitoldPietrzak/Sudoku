@@ -1,6 +1,5 @@
 package sudoku;
 
-import java.util.Random;
 
 /**
  * Class Generating valid 9 by 9 sudoku board.
@@ -44,8 +43,20 @@ public class SudokuBoard {
      * @param columnNumber Column number of field.
      * @return returns the value of given field.
      */
-    public final int getBoard(final int rowNumber, final int columnNumber) {
+    public final int get(final int rowNumber, final int columnNumber) {
         return board[rowNumber][columnNumber];
+    }
+
+    /**
+     * Function sets the value of given field.
+     *
+     * @param rowNumber    Row number of field.
+     * @param columnNumber Column number of field.
+     * @param value        value to assing to given field.
+     */
+    public final void set(final int rowNumber,
+                          final int columnNumber, final int value) {
+        board[rowNumber][columnNumber] = value;
     }
 
     /**
@@ -54,7 +65,7 @@ public class SudokuBoard {
      * @param columnNumber is the number of column for which the check is done.
      * @return function returns true if the columns is valid, false if not.
      */
-    private boolean checkColumn(final int columnNumber) {
+    public final boolean checkColumn(final int columnNumber) {
         boolean[] checker = new boolean[sudokuSize + 1];
         for (int i = 0; i < sudokuSize; i++) {
             if (checker[board[i][columnNumber]]
@@ -73,7 +84,7 @@ public class SudokuBoard {
      * @param rowNumber is the number of row for which the check is done.
      * @return function returns true if the row is valid, false if not.
      */
-    private boolean checkRow(final int rowNumber) {
+    public final boolean checkRow(final int rowNumber) {
         boolean[] checker = new boolean[sudokuSize + 1];
         for (int i = 0; i < sudokuSize; i++) {
             if (checker[board[rowNumber][i]] && (board[rowNumber][i] != 0)) {
@@ -92,7 +103,7 @@ public class SudokuBoard {
      * @param colNumber is the number of row for which the check is done.
      * @return function returns true if the block is valid, false if not.
      */
-    private boolean checkBlock(final int rowNumber, final int colNumber) {
+    public final boolean checkBlock(final int rowNumber, final int colNumber) {
         int blockRow = rowNumber / blockSize;
         int blockCol = colNumber / blockSize;
         boolean[] checker = new boolean[sudokuSize + 1];
@@ -121,52 +132,6 @@ public class SudokuBoard {
             }
         }
         return true;
-    }
-
-    /**
-     * Fills the board with numbers, generating valid sudoku board.
-     */
-    public final void fillBoard() {
-        Random random = new Random();
-        boolean isThere0 = false;
-        for (int i = 0; i < sudokuSize; i++) {
-            board[0][i] = (random.nextInt(sudokuSize) + 1);
-            if (board[0][i] == 0) {
-                if (isThere0) {
-                    i--;
-                    continue;
-                } else {
-                    isThere0 = true;
-                }
-            }
-            if (!checkRow(0)) {
-                i--;
-            }
-        }
-        for (int i = 1; i < sudokuSize; i++) {
-            for (int j = 0; j < sudokuSize; j++) {
-                do {
-                    board[i][j] = (board[i][j] + 1) % (sudokuSize + 1);
-                    if (board[i][j] == 0) {
-                        if (j == 0) {
-                            if (i == 0) {
-                                board[i][j]++;
-                            } else {
-                                j = sudokuSize - 2;
-                                i--;
-                            }
-                        } else {
-                            j -= 2;
-                        }
-                        break;
-
-                    }
-
-                } while (!(checkRow(i) && checkColumn(j) && checkBlock(i, j)));
-
-            }
-
-        }
     }
 
     /**
