@@ -7,6 +7,14 @@ public class SudokuField {
         return value;
     }
 
+    public SudokuField(int value) {
+        this.value = value;
+    }
+
+    public SudokuField() {
+        this.value = 0;
+    }
+
     public final void setFieldValue(int value) {
         this.value = value;
     }
