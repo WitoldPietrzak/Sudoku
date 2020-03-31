@@ -10,6 +10,11 @@ class BacktrackingSudokuSolverTest {
     void solve() {
         SudokuBoard sudoku = new SudokuBoard();
         BacktrackingSudokuSolver solver = new BacktrackingSudokuSolver();
+        for (int i = 0; i < sudoku.getSudokuSize(); i++) {
+            for (int j = 0; j < sudoku.getSudokuSize(); j++){
+                sudoku.set(i,j,0);
+            }
+        }
         solver.solve(sudoku);
         assertTrue(sudoku.checkBoard());
     }

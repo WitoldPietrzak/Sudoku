@@ -8,13 +8,17 @@ import java.util.Random;
 public class BacktrackingSudokuSolver implements SudokuSolver {
     @Override
     public final void solve(final SudokuBoard sudoku) {
+        int[] firstRow = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         Random random = new Random();
-        boolean isThere0 = false;
+        for (int i = 0; i < firstRow.length; i++) {
+            int indexSwap = random.nextInt(firstRow.length);
+            int swapBuffor = firstRow[indexSwap];
+            firstRow[indexSwap] = firstRow[i];
+            firstRow[i] = swapBuffor;
+        }
         for (int i = 0; i < sudoku.getSudokuSize(); i++) {
-            sudoku.set(0, i, (random.nextInt(sudoku.getSudokuSize()))+1);
-            if (!sudoku.checkRow(0)) {
-                i--;
-            }
+            sudoku.set(0, i, firstRow[i]);
+
         }
         for (int i = 1; i < sudoku.getSudokuSize(); i++) {
             for (int j = 0; j < sudoku.getSudokuSize(); j++) {
@@ -23,12 +27,9 @@ public class BacktrackingSudokuSolver implements SudokuSolver {
                             % (sudoku.getSudokuSize() + 1));
                     if (sudoku.get(i, j) == 0) {
                         if (j == 0) {
-                            if (i == 0) {
-                                sudoku.set(i, j, sudoku.get(i, j) + 1);
-                            } else {
                                 j = sudoku.getSudokuSize() - 2;
                                 i--;
-                            }
+
                         } else {
                             j -= 2;
                         }
@@ -36,8 +37,8 @@ public class BacktrackingSudokuSolver implements SudokuSolver {
 
                     }
 
-                } while (!(sudoku.checkRow(i) && sudoku.checkColumn(j)
-                        && sudoku.checkBlock(i, j)));
+                } while (!(sudoku.getRow(i).verify() && sudoku.getColumn(j).verify()
+                        && sudoku.getBox(i, j).verify()));
 
             }
 

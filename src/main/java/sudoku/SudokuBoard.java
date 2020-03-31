@@ -1,6 +1,5 @@
 package sudoku;
 
-
 /**
  * Class Generating valid 9 by 9 sudoku board.
  */
@@ -10,13 +9,13 @@ public class SudokuBoard {
      */
     private final int sudokuSize = 9;
     /**
-     * Size of one block in the board.
-     */
-    private final int blockSize = 3;
-    /**
      * the board to which sudoku numbers from 1 to 9 are being written.
      */
-    private int[][] board = new int[sudokuSize][sudokuSize];
+    private SudokuField[] board = new SudokuField[sudokuSize * sudokuSize];
+    /**
+     *
+     */
+    BacktrackingSudokuSolver solver = new BacktrackingSudokuSolver();
 
     /**
      * Returns the size of the board.
@@ -27,14 +26,6 @@ public class SudokuBoard {
         return sudokuSize;
     }
 
-    /**
-     * Returns the size of a block.
-     *
-     * @return Returns the size of a block.
-     */
-    public final int getBlockSize() {
-        return blockSize;
-    }
 
     /**
      * Function returns the value of given field.
@@ -44,7 +35,7 @@ public class SudokuBoard {
      * @return returns the value of given field.
      */
     public final int get(final int rowNumber, final int columnNumber) {
-        return board[rowNumber][columnNumber];
+        return board[rowNumber * sudokuSize + columnNumber].getFieldValue();
     }
 
     /**
@@ -56,68 +47,26 @@ public class SudokuBoard {
      */
     public final void set(final int rowNumber,
                           final int columnNumber, final int value) {
-        board[rowNumber][columnNumber] = value;
+
+        board[rowNumber * sudokuSize + columnNumber].setFieldValue(value);
     }
 
-    /**
-     * Function checks if numbers make valid sudoku column.
-     *
-     * @param columnNumber is the number of column for which the check is done.
-     * @return function returns true if the columns is valid, false if not.
-     */
-    public final boolean checkColumn(final int columnNumber) {
-        boolean[] checker = new boolean[sudokuSize + 1];
-        for (int i = 0; i < sudokuSize; i++) {
-            if (checker[board[i][columnNumber]]
-                    && (board[i][columnNumber] != 0)) {
-                return false;
-            }
-            checker[board[i][columnNumber]] = true;
+    public SudokuBoard() {
+        for (int i = 0; i < this.board.length; i++) {
+            this.board[i] = new SudokuField();
         }
-        return true;
-
     }
 
-    /**
-     * Function checks if numbers make valid sudoku row.
-     *
-     * @param rowNumber is the number of row for which the check is done.
-     * @return function returns true if the row is valid, false if not.
-     */
-    public final boolean checkRow(final int rowNumber) {
-        boolean[] checker = new boolean[sudokuSize + 1];
-        for (int i = 0; i < sudokuSize; i++) {
-            if (checker[board[rowNumber][i]] && (board[rowNumber][i] != 0)) {
-                return false;
-            }
-            checker[board[rowNumber][i]] = true;
-
-        }
-        return true;
+    public final SudokuRow getRow(int x) {
+        return new SudokuRow(board, x);
     }
 
-    /**
-     * Function checks if numbers make valid sudoku 3 x 3 block.
-     *
-     * @param rowNumber is the number of column for which the check is done.
-     * @param colNumber is the number of row for which the check is done.
-     * @return function returns true if the block is valid, false if not.
-     */
-    public final boolean checkBlock(final int rowNumber, final int colNumber) {
-        int blockRow = rowNumber / blockSize;
-        int blockCol = colNumber / blockSize;
-        boolean[] checker = new boolean[sudokuSize + 1];
-        for (int i = blockRow * blockSize;
-             i < blockRow * blockSize + blockSize; i++) {
-            for (int j = blockCol * blockSize;
-                 j < blockCol * blockSize + blockSize; j++) {
-                if (checker[board[i][j]] && (board[i][j] != 0)) {
-                    return false;
-                }
-                checker[board[i][j]] = true;
-            }
-        }
-        return true;
+    public final SudokuColumn getColumn(int y) {
+        return new SudokuColumn(board, y);
+    }
+
+    public final SudokuBox getBox(int x, int y) {
+        return new SudokuBox(board, x, y);
     }
 
     /**
@@ -127,12 +76,20 @@ public class SudokuBoard {
      */
     public final boolean checkBoard() {
         for (int i = 0; i < sudokuSize; i++) {
-            if (!(checkColumn(i) && checkRow(i) && checkBlock(i, i))) {
+            if (!(getColumn(i).verify() && getRow(i).verify() && getBox(i, i).verify())) {
                 return false;
             }
         }
         return true;
     }
+
+    /**
+     * Solves sudoku board using BacktrackingSudokuSolver.
+     */
+    public final void solveGame() {
+        solver.solve(this);
+    }
+
 
 }
 
