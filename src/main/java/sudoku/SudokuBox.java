@@ -8,7 +8,8 @@ public class SudokuBox extends SudokuFieldCollection {
         y /= boxLenth;
         for (int i = 0; i < boxLenth; i++) {
             for (int j = 0; j < boxLenth; j++) {
-                link[i * boxLenth + j] = board[x * boxLenth + j + y * boxLenth * linkSize + linkSize * i];
+                link[i * boxLenth + j] =
+                        board[x * boxLenth + j + y * boxLenth * linkSize + linkSize * i];
             }
         }
     }

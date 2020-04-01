@@ -13,7 +13,7 @@ public class SudokuBoard {
      */
     private SudokuField[] board = new SudokuField[sudokuSize * sudokuSize];
     /**
-     *
+     * solver, which is used to solve sudoku.
      */
     BacktrackingSudokuSolver solver = new BacktrackingSudokuSolver();
 
