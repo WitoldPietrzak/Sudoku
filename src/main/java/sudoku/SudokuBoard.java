@@ -1,5 +1,9 @@
 package sudoku;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * Class Generating valid 9 by 9 sudoku board.
  */
@@ -11,11 +15,11 @@ public class SudokuBoard {
     /**
      * the board to which sudoku numbers from 1 to 9 are being written.
      */
-    private SudokuField[] board = new SudokuField[sudokuSize * sudokuSize];
+    private List<SudokuField> board = Arrays.asList(new SudokuField[sudokuSize * sudokuSize]);
     /**
      * solver, which is used to solve sudoku.
      */
-    BacktrackingSudokuSolver solver = new BacktrackingSudokuSolver();
+    SudokuSolver solver = new BacktrackingSudokuSolver();
 
     /**
      * Returns the size of the board.
@@ -35,7 +39,7 @@ public class SudokuBoard {
      * @return returns the value of given field.
      */
     public final int get(final int rowNumber, final int columnNumber) {
-        return board[rowNumber * sudokuSize + columnNumber].getFieldValue();
+        return board.get(rowNumber * sudokuSize + columnNumber).getFieldValue();
     }
 
     /**
@@ -48,12 +52,12 @@ public class SudokuBoard {
     public final void set(final int rowNumber,
                           final int columnNumber, final int value) {
 
-        board[rowNumber * sudokuSize + columnNumber].setFieldValue(value);
+        board.get(rowNumber * sudokuSize + columnNumber).setFieldValue(value);
     }
 
     public SudokuBoard() {
-        for (int i = 0; i < this.board.length; i++) {
-            this.board[i] = new SudokuField();
+        for (int i = 0; i < this.board.size(); i++) {
+            this.board.set(i, new SudokuField());
         }
     }
 
