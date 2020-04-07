@@ -2,8 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df4544b5-381f-46f2-9549-46e81c71fef7" name="Default Changelist" comment="Separated SudokuSolver from SudokuBoard. Installed JaCoCO">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/pk-2020-mkwa-sr-12-02.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pk-2020-mkwa-sr-12-02.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sudoku/BacktrackingSudokuSolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sudoku/BacktrackingSudokuSolver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sudoku/SudokuBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sudoku/SudokuBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sudoku/SudokuBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sudoku/SudokuBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sudoku/SudokuColumn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sudoku/SudokuColumn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sudoku/SudokuFieldCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sudoku/SudokuFieldCollection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sudoku/SudokuRow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sudoku/SudokuRow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +69,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/FirstJava" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -72,7 +83,22 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SudokuBoardTest.testCorrect">
+  <component name="RunManager" selected="JUnit.BacktrackingSudokuSolverTest">
+    <configuration name="BacktrackingSudokuSolverTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="pk-2020-mkwa-sr-12-02" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sudoku.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="sudoku" />
+      <option name="MAIN_CLASS_NAME" value="sudoku.BacktrackingSudokuSolverTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BacktrackingSudokuSolverTest.solve" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PKZ2" />
       <extension name="coverage">
@@ -105,23 +131,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SudokuBoardTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="PKZ2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="sudoku.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="sudoku" />
-      <option name="MAIN_CLASS_NAME" value="sudoku.SudokuBoardTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="SudokuBoardTest.testCorrect" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="PKZ2" />
+      <module name="pk-2020-mkwa-sr-12-02" />
+      <useClassPathOnly />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="sudoku.*" />
@@ -132,12 +144,13 @@
       <option name="MAIN_CLASS_NAME" value="sudoku.SudokuBoardTest" />
       <option name="METHOD_NAME" value="testCorrect" />
       <option name="TEST_OBJECT" value="method" />
+      <option name="PARAMETERS" value="" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SudokuBoardTest.testIfNotEqual" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="PKZ2" />
+    <configuration name="SudokuFieldTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="pk-2020-mkwa-sr-12-02" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="sudoku.*" />
@@ -145,20 +158,26 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="sudoku" />
-      <option name="MAIN_CLASS_NAME" value="sudoku.SudokuBoardTest" />
-      <option name="METHOD_NAME" value="testIfNotEqual" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="sudoku.SudokuFieldTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JUnit.BacktrackingSudokuSolverTest.solve" />
+      <item itemvalue="JUnit.BacktrackingSudokuSolverTest.testIfNotEqual" />
+      <item itemvalue="JUnit.SudokuBoardTest.testCorrect" />
+      <item itemvalue="JUnit.BacktrackingSudokuSolverTest" />
+      <item itemvalue="JUnit.SudokuFieldTest" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BacktrackingSudokuSolverTest" />
         <item itemvalue="JUnit.SudokuBoardTest.testCorrect" />
+        <item itemvalue="JUnit.SudokuFieldTest" />
         <item itemvalue="JUnit.BacktrackingSudokuSolverTest.solve" />
         <item itemvalue="JUnit.BacktrackingSudokuSolverTest.testIfNotEqual" />
-        <item itemvalue="JUnit.SudokuBoardTest.testIfNotEqual" />
-        <item itemvalue="JUnit.SudokuBoardTest" />
       </list>
     </recent_temporary>
   </component>
@@ -175,6 +194,11 @@
       <workItem from="1584496006842" duration="1186000" />
       <workItem from="1585106863678" duration="2413000" />
       <workItem from="1585110106937" duration="9176000" />
+      <workItem from="1585734427205" duration="626000" />
+      <workItem from="1585735082553" duration="2484000" />
+      <workItem from="1586288776807" duration="20000" />
+      <workItem from="1586288899810" duration="7358000" />
+      <workItem from="1586297837491" duration="1162000" />
     </task>
     <task id="LOCAL-00001" summary="Separated SudokuSolver from SudokuBoard. Installed JaCoCO">
       <created>1585115488738</created>
@@ -195,6 +219,14 @@
     <option name="LAST_COMMIT_MESSAGE" value="Separated SudokuSolver from SudokuBoard. Installed JaCoCO" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="552" y="178" key="#Project_Structure" timestamp="1585734844926">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="178" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1585734844926" />
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586289750401">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586289750401" />
     <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser" timestamp="1585113441017">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -203,34 +235,40 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="393" y="7" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1585115670411" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1585115990397">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="686" y="211" key="FileChooserDialogImpl" timestamp="1586288792463">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1585115990397" />
-    <state width="1493" height="260" key="GridCell.Tab.0.bottom" timestamp="1585118426005">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="686" y="211" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1586288792463" />
+    <state width="938" height="211" key="GridCell.Tab.0.bottom" timestamp="1586299122603">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="260" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585118426005" />
-    <state width="1493" height="260" key="GridCell.Tab.0.center" timestamp="1585118426005">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="938" height="211" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586299122603" />
+    <state width="938" height="211" key="GridCell.Tab.0.center" timestamp="1586299122603">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="260" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585118426005" />
-    <state width="1493" height="260" key="GridCell.Tab.0.left" timestamp="1585118426005">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="938" height="211" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586299122603" />
+    <state width="938" height="211" key="GridCell.Tab.0.left" timestamp="1586299122603">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="260" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585118426005" />
-    <state width="1493" height="260" key="GridCell.Tab.0.right" timestamp="1585118426005">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="938" height="211" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586299122603" />
+    <state width="938" height="211" key="GridCell.Tab.0.right" timestamp="1586299122603">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="260" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585118426005" />
+    <state width="938" height="211" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586299122603" />
     <state x="455" y="0" key="SettingsEditor" timestamp="1585109275058">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="455" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1585109275058" />
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1585110106906">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="581" y="298" key="com.intellij.ide.util.TipDialog" timestamp="1585734428108">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1585110106906" />
+    <state x="581" y="298" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585734428108" />
     <state x="529" y="196" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1585114892612">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

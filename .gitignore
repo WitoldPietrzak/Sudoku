@@ -1,0 +1,5 @@
+#ignoring zip files
+*.zip
+
+#ignoring target folder
+target/

@@ -1,5 +1,8 @@
 package sudoku;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -8,16 +11,18 @@ import java.util.Random;
 public class BacktrackingSudokuSolver implements SudokuSolver {
     @Override
     public final void solve(final SudokuBoard sudoku) {
-        int[] firstRow = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        Random random = new Random();
-        for (int i = 0; i < firstRow.length; i++) {
-            int indexSwap = random.nextInt(firstRow.length);
-            int swapBuffor = firstRow[indexSwap];
-            firstRow[indexSwap] = firstRow[i];
-            firstRow[i] = swapBuffor;
-        }
+//        int[] firstRow = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        List <Integer> firstRow = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+        Collections.shuffle(firstRow);
+//        Random random = new Random();
+//        for (int i = 0; i < firstRow.length; i++) {
+//            int indexSwap = random.nextInt(firstRow.length);
+//            int swapBuffor = firstRow[indexSwap];
+//            firstRow[indexSwap] = firstRow[i];
+//            firstRow[i] = swapBuffor;
+//        }
         for (int i = 0; i < sudoku.getSudokuSize(); i++) {
-            sudoku.set(0, i, firstRow[i]);
+            sudoku.set(0, i, firstRow.get(i));
 
         }
         for (int i = 1; i < sudoku.getSudokuSize(); i++) {
