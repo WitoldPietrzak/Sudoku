@@ -8,7 +8,7 @@ class SudokuBoardTest {
 
     @Test
     void testCorrect() {
-        SudokuBoard sudoku = new SudokuBoard();
+        SudokuBoard sudoku = new SudokuBoard(new BacktrackingSudokuSolver());
         sudoku.set(1, 1, 5);
         assertEquals(5, sudoku.get(1, 1));
         assertNotEquals(8, sudoku.get(1, 1));
