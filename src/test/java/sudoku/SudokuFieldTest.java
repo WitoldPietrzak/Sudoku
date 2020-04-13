@@ -12,7 +12,5 @@ class SudokuFieldTest {
         assertEquals(field.getFieldValue(), 5);
         SudokuField field2 = new SudokuField();
         assertEquals(field2.getFieldValue(), 0);
-
-
     }
 }

@@ -1,11 +1,14 @@
 package sudoku;
 
-import java.util.Arrays;
 import java.util.List;
 
 public abstract class SudokuFieldCollection {
-    protected int linkSize = 9;
-    protected List<SudokuField> link = Arrays.asList(new SudokuField[linkSize]);
+    public static final int linkSize = 9;
+    private List<SudokuField> link;
+
+    public SudokuFieldCollection(List<SudokuField> fields) {
+        this.link = fields;
+    }
 
     public boolean verify() {
         boolean[] checker = new boolean[link.size() + 1];
