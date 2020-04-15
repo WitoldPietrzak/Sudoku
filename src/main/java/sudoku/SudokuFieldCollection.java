@@ -1,9 +1,12 @@
 package sudoku;
 
 import java.util.List;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 
 public abstract class SudokuFieldCollection {
-    public static final int linkSize = 9;
     private List<SudokuField> link;
 
     public SudokuFieldCollection(List<SudokuField> fields) {
@@ -23,4 +26,18 @@ public abstract class SudokuFieldCollection {
 
     }
 
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this).append("Fields", link).toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return new EqualsBuilder().append(link, ((SudokuFieldCollection) o).link).isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(39,31).append(link).toHashCode();
+    }
 }

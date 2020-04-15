@@ -1,10 +1,7 @@
 package sudoku;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.util.Arrays;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class SudokuFieldCollectionTest {
@@ -42,5 +39,25 @@ class SudokuFieldCollectionTest {
     void verifyInvalidRowTest() {
         SudokuRow invalidRow = makeInvalidSudokuRow();
         assertFalse(invalidRow.verify());
+    }
+
+    @Test
+    void testToString() {
+        SudokuRow row = makeValidSudokuRow();
+        assertNotNull(row.toString());
+    }
+
+    @Test
+    void testEquals() {
+        SudokuRow row1 = makeValidSudokuRow();
+        SudokuRow row2 = makeValidSudokuRow();
+        assertTrue(row1.equals(row2) && row2.equals(row1));
+    }
+
+    @Test
+    void testHashCode() {
+        SudokuRow row1 = makeValidSudokuRow();
+        SudokuRow row2 = makeValidSudokuRow();
+        assertEquals(row1.hashCode(), row2.hashCode());
     }
 }

@@ -2,6 +2,9 @@ package sudoku;
 
 import java.util.Arrays;
 import java.util.List;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * Class Generating valid 9 by 9 sudoku board.
@@ -111,6 +114,19 @@ public class SudokuBoard {
         solver.solve(this);
     }
 
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this).append("Board", board).toString();
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        return new EqualsBuilder().append(board, ((SudokuBoard) o).board).isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(13, 21).append(board).toHashCode();
+    }
 }
 
