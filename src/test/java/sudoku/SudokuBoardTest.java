@@ -48,7 +48,12 @@ class SudokuBoardTest {
     void testEquals() {
         SudokuBoard sudoku = new SudokuBoard(new BacktrackingSudokuSolver());
         SudokuBoard sudoku1 = new SudokuBoard(new BacktrackingSudokuSolver());
+        assertTrue(sudoku.equals(sudoku));
         assertTrue(sudoku.equals(sudoku1) && sudoku1.equals(sudoku));
+        sudoku.set(3,3,5);
+        assertFalse(sudoku.equals(sudoku1) && sudoku1.equals(sudoku));
+        SudokuField sudokuPole = new SudokuField(4);
+        assertFalse(sudoku.equals(sudokuPole));
     }
 
     @Test

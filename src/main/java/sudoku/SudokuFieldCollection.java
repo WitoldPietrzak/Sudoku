@@ -33,7 +33,14 @@ public abstract class SudokuFieldCollection {
 
     @Override
     public boolean equals(Object o) {
-        return new EqualsBuilder().append(link, ((SudokuFieldCollection) o).link).isEquals();
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof SudokuFieldCollection)) {
+            return false;
+        }
+        SudokuFieldCollection that = (SudokuFieldCollection) o;
+        return new EqualsBuilder().append(link, that.link).isEquals();
     }
 
     @Override
