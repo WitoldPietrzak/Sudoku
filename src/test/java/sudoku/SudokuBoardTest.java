@@ -37,4 +37,24 @@ class SudokuBoardTest {
         sudoku.set(2, 2, sudoku.get(0, 0));
         assertFalse(sudoku.checkBoard());
     }
+
+    @Test
+    void testToString() {
+        SudokuBoard sudoku = new SudokuBoard(new BacktrackingSudokuSolver());
+        assertNotNull(sudoku.toString());
+    }
+
+    @Test
+    void testEquals() {
+        SudokuBoard sudoku = new SudokuBoard(new BacktrackingSudokuSolver());
+        SudokuBoard sudoku1 = new SudokuBoard(new BacktrackingSudokuSolver());
+        assertTrue(sudoku.equals(sudoku1) && sudoku1.equals(sudoku));
+    }
+
+    @Test
+    void testHashCode() {
+        SudokuBoard sudoku = new SudokuBoard(new BacktrackingSudokuSolver());
+        SudokuBoard sudoku1 = new SudokuBoard(new BacktrackingSudokuSolver());
+        assertEquals(sudoku.hashCode(), sudoku1.hashCode());
+    }
 }
