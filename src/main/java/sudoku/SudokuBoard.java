@@ -121,7 +121,14 @@ public class SudokuBoard {
 
     @Override
     public boolean equals(Object o) {
-        return new EqualsBuilder().append(board, ((SudokuBoard) o).board).isEquals();
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof SudokuBoard)) {
+            return false;
+        }
+        SudokuBoard that = (SudokuBoard) o;
+        return new EqualsBuilder().append(board, that.board).isEquals();
     }
 
     @Override

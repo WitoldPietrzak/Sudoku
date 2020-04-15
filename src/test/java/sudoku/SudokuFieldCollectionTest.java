@@ -52,6 +52,11 @@ class SudokuFieldCollectionTest {
         SudokuRow row1 = makeValidSudokuRow();
         SudokuRow row2 = makeValidSudokuRow();
         assertTrue(row1.equals(row2) && row2.equals(row1));
+        row2 = makeInvalidSudokuRow();
+        assertFalse(row1.equals(row2) && row2.equals(row1));
+        assertTrue(row1.equals(row1));
+        SudokuBoard board = new SudokuBoard(new BacktrackingSudokuSolver());
+        assertFalse(row1.equals(board));
     }
 
     @Test

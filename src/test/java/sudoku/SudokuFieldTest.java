@@ -24,6 +24,11 @@ class SudokuFieldTest {
         SudokuField field = new SudokuField(5);
         SudokuField field2 = new SudokuField(5);
         assertTrue(field.equals(field2) && field2.equals(field));
+        field2.setFieldValue(4);
+        assertFalse(field.equals(field2) && field2.equals(field));
+        assertTrue(field.equals(field));
+        SudokuBoard board = new SudokuBoard(new BacktrackingSudokuSolver());
+        assertFalse(field.equals(board));
     }
 
     @Test
