@@ -1,5 +1,6 @@
 package sudoku;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -9,7 +10,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 /**
  * Class Generating valid 9 by 9 sudoku board.
  */
-public class SudokuBoard {
+public class SudokuBoard implements Serializable {
     /**
      * Size of sudoku board.
      */
