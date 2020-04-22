@@ -3,3 +3,7 @@
 
 #ignoring target folder
 target/
+
+#ignoring txt files
+*.txt
+.idea/codeStyles/codeStyleConfig.xml

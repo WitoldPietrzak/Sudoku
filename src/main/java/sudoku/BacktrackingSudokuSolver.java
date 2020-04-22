@@ -1,5 +1,6 @@
 package sudoku;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -7,7 +8,7 @@ import java.util.List;
 /**
  * Fills Sudoku Board using Backtracking algorithm.
  */
-public class BacktrackingSudokuSolver implements SudokuSolver {
+public class BacktrackingSudokuSolver implements SudokuSolver, Serializable {
     @Override
     public final void solve(final SudokuBoard sudoku) {
         List<Integer> firstRow = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
