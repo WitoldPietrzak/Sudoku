@@ -1,6 +1,6 @@
 package sudoku;
 
-import java.io.Serializable;
+import java.io.*;
 import java.util.Arrays;
 import java.util.List;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -10,7 +10,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 /**
  * Class Generating valid 9 by 9 sudoku board.
  */
-public class SudokuBoard implements Serializable {
+public class SudokuBoard implements Serializable, Cloneable {
     /**
      * Size of sudoku board.
      */
@@ -135,6 +135,21 @@ public class SudokuBoard implements Serializable {
     @Override
     public int hashCode() {
         return new HashCodeBuilder(13, 21).append(board).toHashCode();
+    }
+
+    public SudokuBoard clone() throws CloneNotSupportedException {
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+
+        try {
+            ObjectOutputStream oos = new ObjectOutputStream(bos);
+            oos.writeObject(this);
+            ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
+
+            ObjectInputStream ois = new ObjectInputStream(bis);
+            return (SudokuBoard) ois.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            return null;
+        }
     }
 }
 
