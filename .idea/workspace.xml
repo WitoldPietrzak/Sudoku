@@ -2,16 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df4544b5-381f-46f2-9549-46e81c71fef7" name="Default Changelist" comment="Separated SudokuSolver from SudokuBoard. Installed JaCoCO">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/src/main/java/sudoku/BacktrackingSudokuSolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/Model/src/main/java/sudoku/BacktrackingSudokuSolver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/src/main/java/sudoku/SudokuBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/Model/src/main/java/sudoku/SudokuBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/src/main/java/sudoku/SudokuBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/Model/src/main/java/sudoku/SudokuBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/src/main/java/sudoku/SudokuColumn.java" beforeDir="false" afterPath="$PROJECT_DIR$/Model/src/main/java/sudoku/SudokuColumn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/src/main/java/sudoku/SudokuField.java" beforeDir="false" afterPath="$PROJECT_DIR$/Model/src/main/java/sudoku/SudokuField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/src/main/java/sudoku/SudokuFieldCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Model/src/main/java/sudoku/SudokuFieldCollection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/src/main/java/sudoku/SudokuRow.java" beforeDir="false" afterPath="$PROJECT_DIR$/Model/src/main/java/sudoku/SudokuRow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/src/test/java/sudoku/SudokuBoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Model/src/test/java/sudoku/SudokuBoardTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Model/src/test/java/sudoku/SudokuFieldCollectionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Model/src/test/java/sudoku/SudokuFieldCollectionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/src/test/java/sudoku/SudokuFieldTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Model/src/test/java/sudoku/SudokuFieldTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +74,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SudokuFieldCollectionTest.testCloning">
+  <component name="RunManager" selected="JUnit.SudokuFieldTest.testCloning">
     <configuration name="SudokuBoardTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ModelProject" />
       <extension name="coverage">
@@ -96,8 +90,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SudokuBoardTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="pk-2020-mkwa-sr-12-02" />
+    <configuration name="SudokuBoardTest.testClonable" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ModelProject" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="sudoku.*" />
@@ -106,22 +100,8 @@
       </extension>
       <option name="PACKAGE_NAME" value="sudoku" />
       <option name="MAIN_CLASS_NAME" value="sudoku.SudokuBoardTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SudokuFieldCollectionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="pk-2020-mkwa-sr-12-02" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="sudoku.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="sudoku" />
-      <option name="MAIN_CLASS_NAME" value="sudoku.SudokuFieldCollectionTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="testClonable" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -142,8 +122,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SudokuFieldTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="pk-2020-mkwa-sr-12-02" />
+    <configuration name="SudokuFieldTest.testCloning" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ModelProject" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="sudoku.*" />
@@ -152,25 +132,42 @@
       </extension>
       <option name="PACKAGE_NAME" value="sudoku" />
       <option name="MAIN_CLASS_NAME" value="sudoku.SudokuFieldTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="testCloning" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SudokuFieldTest.testCompareTo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ModelProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sudoku.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="sudoku" />
+      <option name="MAIN_CLASS_NAME" value="sudoku.SudokuFieldTest" />
+      <option name="METHOD_NAME" value="testCompareTo" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.SudokuFieldTest" />
-      <item itemvalue="JUnit.SudokuFieldCollectionTest" />
-      <item itemvalue="JUnit.SudokuBoardTest" />
       <item itemvalue="JUnit.SudokuBoardTest (1)" />
       <item itemvalue="JUnit.SudokuFieldCollectionTest.testCloning" />
+      <item itemvalue="JUnit.SudokuBoardTest.testClonable" />
+      <item itemvalue="JUnit.SudokuFieldTest.testCompareTo" />
+      <item itemvalue="JUnit.SudokuFieldTest.testCloning" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SudokuFieldTest.testCloning" />
+        <item itemvalue="JUnit.SudokuFieldTest.testCompareTo" />
         <item itemvalue="JUnit.SudokuFieldCollectionTest.testCloning" />
+        <item itemvalue="JUnit.SudokuBoardTest.testClonable" />
         <item itemvalue="JUnit.SudokuBoardTest (1)" />
-        <item itemvalue="JUnit.SudokuBoardTest" />
-        <item itemvalue="JUnit.SudokuFieldCollectionTest" />
-        <item itemvalue="JUnit.SudokuFieldTest" />
       </list>
     </recent_temporary>
   </component>
@@ -245,30 +242,30 @@
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1585115990397" />
     <state x="686" y="211" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1586787069384" />
-    <state width="2517" height="282" key="GridCell.Tab.0.bottom" timestamp="1588120537307">
+    <state width="2517" height="282" key="GridCell.Tab.0.bottom" timestamp="1588121963265">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state width="1493" height="260" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585118426005" />
     <state width="1877" height="211" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586912398308" />
-    <state width="2517" height="282" key="GridCell.Tab.0.bottom/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1588120537307" />
-    <state width="2517" height="282" key="GridCell.Tab.0.center" timestamp="1588120537307">
+    <state width="2517" height="282" key="GridCell.Tab.0.bottom/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1588121963265" />
+    <state width="2517" height="282" key="GridCell.Tab.0.center" timestamp="1588121963265">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state width="1493" height="260" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585118426005" />
     <state width="1877" height="211" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586912398308" />
-    <state width="2517" height="282" key="GridCell.Tab.0.center/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1588120537307" />
-    <state width="2517" height="282" key="GridCell.Tab.0.left" timestamp="1588120537307">
+    <state width="2517" height="282" key="GridCell.Tab.0.center/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1588121963265" />
+    <state width="2517" height="282" key="GridCell.Tab.0.left" timestamp="1588121963265">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state width="1493" height="260" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585118426005" />
     <state width="1877" height="211" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586912398307" />
-    <state width="2517" height="282" key="GridCell.Tab.0.left/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1588120537307" />
-    <state width="2517" height="282" key="GridCell.Tab.0.right" timestamp="1588120537307">
+    <state width="2517" height="282" key="GridCell.Tab.0.left/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1588121963265" />
+    <state width="2517" height="282" key="GridCell.Tab.0.right" timestamp="1588121963265">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state width="1493" height="260" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585118426005" />
     <state width="1877" height="211" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586912398308" />
-    <state width="2517" height="282" key="GridCell.Tab.0.right/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1588120537307" />
+    <state width="2517" height="282" key="GridCell.Tab.0.right/0.0.2560.1040/-1920.0.1920.1040@0.0.2560.1040" timestamp="1588121963265" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1586910942422">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
