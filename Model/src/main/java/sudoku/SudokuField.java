@@ -1,11 +1,12 @@
 package sudoku;
 
 import java.io.Serializable;
+
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public class SudokuField implements Serializable {
+public class SudokuField implements Serializable, Cloneable, Comparable<SudokuField> {
     private int value;
 
     public final int getFieldValue() {
@@ -44,5 +45,13 @@ public class SudokuField implements Serializable {
     @Override
     public int hashCode() {
         return new HashCodeBuilder(29, 39).append(value).toHashCode();
+    }
+
+    public SudokuField clone() throws CloneNotSupportedException {
+        return (SudokuField) super.clone();
+    }
+
+    public int compareTo(SudokuField f) {
+        return Integer.compare(this.value, f.value);
     }
 }
