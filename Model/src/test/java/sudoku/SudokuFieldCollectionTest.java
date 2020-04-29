@@ -1,6 +1,7 @@
 package sudoku;
 
 import org.junit.jupiter.api.Test;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -8,7 +9,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SudokuFieldCollectionTest {
     protected List<SudokuField> link;
-    private SudokuRow makeValidSudokuRow () {
+
+    private SudokuRow makeValidSudokuRow() {
         return new SudokuRow(Arrays.asList(
                 new SudokuField(1),
                 new SudokuField(2),
@@ -20,7 +22,34 @@ class SudokuFieldCollectionTest {
                 new SudokuField(8),
                 new SudokuField(9)));
     }
-    private SudokuRow makeInvalidSudokuRow () {
+
+    private SudokuColumn makeValidSudokuColumn() {
+        return new SudokuColumn(Arrays.asList(
+                new SudokuField(1),
+                new SudokuField(2),
+                new SudokuField(3),
+                new SudokuField(4),
+                new SudokuField(5),
+                new SudokuField(6),
+                new SudokuField(7),
+                new SudokuField(8),
+                new SudokuField(9)));
+    }
+
+    private SudokuBox makeValidSudokuBox() {
+        return new SudokuBox(Arrays.asList(
+                new SudokuField(1),
+                new SudokuField(2),
+                new SudokuField(3),
+                new SudokuField(4),
+                new SudokuField(5),
+                new SudokuField(6),
+                new SudokuField(7),
+                new SudokuField(8),
+                new SudokuField(9)));
+    }
+
+    private SudokuRow makeInvalidSudokuRow() {
         return new SudokuRow(Arrays.asList(
                 new SudokuField(1),
                 new SudokuField(1),
@@ -32,6 +61,7 @@ class SudokuFieldCollectionTest {
                 new SudokuField(8),
                 new SudokuField(9)));
     }
+
     @Test
     void verifyValidRowTest() {
         SudokuRow validRow = makeValidSudokuRow();
@@ -68,13 +98,23 @@ class SudokuFieldCollectionTest {
         SudokuRow row2 = makeValidSudokuRow();
         assertEquals(row1.hashCode(), row2.hashCode());
     }
+
     @Test
     void testCloning() throws CloneNotSupportedException {
         SudokuRow row1 = makeValidSudokuRow();
         SudokuRow row2 = row1.clone();
-        row2.link.set(0,new SudokuField(56));
-        System.out.println(row1);
-        System.out.println(row2);
+        row2.link.set(0, new SudokuField(56));
+        assertNotEquals(row1, row2);
+
+        SudokuColumn col1 = makeValidSudokuColumn();
+        SudokuColumn col2 = col1.clone();
+        col2.link.set(0, new SudokuField(7));
+        assertNotEquals(col1, col2);
+
+        SudokuBox box1 = makeValidSudokuBox();
+        SudokuBox box2 = box1.clone();
+        box2.link.set(0, new SudokuField(15));
+        assertNotEquals(box1, box2);
 
     }
 }
