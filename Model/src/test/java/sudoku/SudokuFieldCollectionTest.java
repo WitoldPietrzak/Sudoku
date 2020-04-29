@@ -2,9 +2,12 @@ package sudoku;
 
 import org.junit.jupiter.api.Test;
 import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class SudokuFieldCollectionTest {
+    protected List<SudokuField> link;
     private SudokuRow makeValidSudokuRow () {
         return new SudokuRow(Arrays.asList(
                 new SudokuField(1),
@@ -64,5 +67,14 @@ class SudokuFieldCollectionTest {
         SudokuRow row1 = makeValidSudokuRow();
         SudokuRow row2 = makeValidSudokuRow();
         assertEquals(row1.hashCode(), row2.hashCode());
+    }
+    @Test
+    void testCloning() throws CloneNotSupportedException {
+        SudokuRow row1 = makeValidSudokuRow();
+        SudokuRow row2 = row1.clone();
+        row2.link.set(0,new SudokuField(56));
+        System.out.println(row1);
+        System.out.println(row2);
+
     }
 }
