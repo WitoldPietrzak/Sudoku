@@ -24,8 +24,8 @@ public class BacktrackingSudokuSolver implements SudokuSolver, Serializable {
                             % (sudoku.getSudokuSize() + 1));
                     if (sudoku.get(i, j) == 0) {
                         if (j == 0) {
-                                j = sudoku.getSudokuSize() - 2;
-                                i--;
+                            j = sudoku.getSudokuSize() - 2;
+                            i--;
 
                         } else {
                             j -= 2;

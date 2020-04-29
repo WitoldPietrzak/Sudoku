@@ -1,13 +1,14 @@
 package sudoku;
 
+import java.io.Serializable;
 import java.util.List;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 
-public abstract class SudokuFieldCollection {
-    private List<SudokuField> link;
+public abstract class SudokuFieldCollection implements Serializable {
+    protected List<SudokuField> link;
 
     public SudokuFieldCollection(List<SudokuField> fields) {
         this.link = fields;
@@ -47,4 +48,5 @@ public abstract class SudokuFieldCollection {
     public int hashCode() {
         return new HashCodeBuilder(39,31).append(link).toHashCode();
     }
+
 }
