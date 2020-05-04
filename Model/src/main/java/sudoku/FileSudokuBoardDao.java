@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-public class FileSudokuBoardDao implements Dao<SudokuBoard> {
+public class FileSudokuBoardDao implements Dao<SudokuBoard>, AutoCloseable {
     private String fileName;
 
     public FileSudokuBoardDao(String filename) {
@@ -37,6 +37,11 @@ public class FileSudokuBoardDao implements Dao<SudokuBoard> {
         } catch (IOException exception) {
             throw new FileException(exception);
         }
+
+    }
+
+    @Override
+    public void close() {
 
     }
 }

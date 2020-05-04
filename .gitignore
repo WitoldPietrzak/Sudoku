@@ -7,3 +7,4 @@ target/
 #ignoring txt files
 *.txt
 .idea/codeStyles/codeStyleConfig.xml
+.idea/workspace.xml
