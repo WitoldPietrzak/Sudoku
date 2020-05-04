@@ -8,8 +8,12 @@
         <outputRelativeToContentRoot value="true" />
         <module name="PKZ2" />
         <module name="ModelProject" />
-        <module name="ViewProject" />
+        <module name="View" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="View" target="11" />
+      <module name="ViewProject" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>
