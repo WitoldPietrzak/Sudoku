@@ -28,6 +28,7 @@ public class SudokuBoard implements Serializable, Cloneable {
      * solver, which is used to solve sudoku.
      */
     private SudokuSolver solver;
+
     /**
      * Returns the size of the board.
      *
@@ -143,17 +144,31 @@ public class SudokuBoard implements Serializable, Cloneable {
     }
 
     public SudokuBoard clone() throws CloneNotSupportedException {
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        try (ByteArrayOutputStream bos = new ByteArrayOutputStream()) {
+            try (ObjectOutputStream oos = new ObjectOutputStream(bos)) {
+                oos.writeObject(this);
+                try (ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray())) {
+                    ObjectInputStream ois = new ObjectInputStream(bis);
+                    return (SudokuBoard) ois.readObject();
+                }
+            }
 
-        try {
-            ObjectOutputStream oos = new ObjectOutputStream(bos);
-            oos.writeObject(this);
-            ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
-
-            ObjectInputStream ois = new ObjectInputStream(bis);
-            return (SudokuBoard) ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
             return null;
+        }
+    }
+
+    public void testowyWypis() {
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (this.get(i, j) == 0) {
+                    System.out.print(" ");
+                } else {
+                    System.out.print(this.get(i, j));
+                }
+                System.out.print(" ");
+            }
+            System.out.print("\n");
         }
     }
 }

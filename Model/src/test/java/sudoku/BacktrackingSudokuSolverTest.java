@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class BacktrackingSudokuSolverTest {
 
     @Test
-    void solve() {
+    void solve() throws CloneNotSupportedException {
         SudokuBoard sudoku = new SudokuBoard(new BacktrackingSudokuSolver());
         for (int i = 0; i < sudoku.getSudokuSize(); i++) {
             for (int j = 0; j < sudoku.getSudokuSize(); j++){
@@ -16,6 +16,7 @@ class BacktrackingSudokuSolverTest {
         }
         sudoku.solveGame();
         assertTrue(sudoku.checkBoard());
+        SudokuFieldRemover rm = new SudokuFieldRemover();
     }
 
     @Test
