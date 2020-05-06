@@ -41,8 +41,7 @@ class SudokuBoardTest {
     @Test
     void testToString() {
         SudokuBoard sudoku = new SudokuBoard(new BacktrackingSudokuSolver());
-        assertNotNull(sudoku.toString());
-    }
+        assertNotNull(sudoku.toString()); }
 
     @Test
     void testEquals() {
