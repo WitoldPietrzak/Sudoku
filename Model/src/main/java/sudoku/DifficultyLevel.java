@@ -3,6 +3,7 @@ package sudoku;
 public enum DifficultyLevel {
     Easy,Normal,Hard;
 
+
     private int fieldsToRemove;
     static {
         Easy.fieldsToRemove = 49;

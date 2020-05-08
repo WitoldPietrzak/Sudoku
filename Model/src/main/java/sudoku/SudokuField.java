@@ -8,13 +8,10 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 public class SudokuField implements Serializable, Cloneable, Comparable<SudokuField> {
     private int value;
 
-    public final int getFieldValue() {
+    public final int getValue() {
         return value;
     }
 
-    public int getValue() {
-        return value;
-    }
 
     public SudokuField(int value) {
         this.value = value;
@@ -24,7 +21,7 @@ public class SudokuField implements Serializable, Cloneable, Comparable<SudokuFi
         this.value = 0;
     }
 
-    public final void setFieldValue(int value) {
+    public final void setValue(int value) {
         this.value = value;
     }
 

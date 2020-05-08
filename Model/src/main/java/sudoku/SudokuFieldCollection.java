@@ -17,11 +17,11 @@ public abstract class SudokuFieldCollection implements Serializable {
     public boolean verify() {
         boolean[] checker = new boolean[link.size() + 1];
         for (SudokuField sudokuField : link) {
-            if (checker[sudokuField.getFieldValue()]
-                    && (sudokuField.getFieldValue() != 0)) {
+            if (checker[sudokuField.getValue()]
+                    && (sudokuField.getValue() != 0)) {
                 return false;
             }
-            checker[sudokuField.getFieldValue()] = true;
+            checker[sudokuField.getValue()] = true;
         }
         return true;
 
