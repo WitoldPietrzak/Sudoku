@@ -8,10 +8,9 @@ import java.util.List;
 public class SudokuFieldRemover {
     public void remove(SudokuBoard sudoku, DifficultyLevel difficulty)
             throws CloneNotSupportedException {
-        SudokuBoard sudokuCopy = sudoku.clone();
         List<Integer> rowNumber = Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8);
         List<Integer> colNumber = Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8);
-        List<Integer> removedValues = new ArrayList<>();
+        int removedValue = 0;
         for (int i = 0; i < difficulty.getFieldsToRemove(); i++) {
             Collections.shuffle(rowNumber);
             Collections.shuffle(colNumber);
@@ -24,12 +23,10 @@ public class SudokuFieldRemover {
                     if (sudoku.get(rowNumber.get(j), colNumber.get(k)) == 0) {
                         continue;
                     }
-                    removedValues.add(sudoku.get(rowNumber.get(j), colNumber.get(k)));
+                    removedValue=sudoku.get(rowNumber.get(j), colNumber.get(k));
                     sudoku.set(rowNumber.get(j), colNumber.get(k), 0);
                     if (possibleSolutionsCounter(sudoku.clone()) != 1) {
-                        sudoku.set(rowNumber.get(j), colNumber.get(k),
-                                removedValues.get(removedValues.size() - 1));
-                        removedValues.remove(removedValues.size() - 1);
+                        sudoku.set(rowNumber.get(j), colNumber.get(k), removedValue);
                     } else {
                         flag = true;
                         break;

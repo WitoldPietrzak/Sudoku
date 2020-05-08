@@ -1,3 +1,38 @@
 .button {
     -fx-text-fill: blue;
 }
+
+.text-field{
+    -fx-border-width: 1;
+    -fx-background-color: white;
+    -fx-border-color: gray;
+    -fx-max-width: 50px;
+}
+
+.bottomBoxField{
+    -fx-border-width: 1 1 3 1;
+    -fx-background-color: white;
+    -fx-border-color: gray gray black gray;
+    -fx-max-width: 50px;
+}
+
+.topBoxField{
+    -fx-border-width: 3 1 1 1;
+    -fx-background-color: white;
+    -fx-border-color: black gray gray gray;
+    -fx-max-width: 50px;
+}
+
+.leftBoxField{
+    -fx-border-width: 1 1 1 3;
+    -fx-background-color: white;
+    -fx-border-color: gray gray gray black;
+    -fx-max-width: 50px;
+}
+
+.rightBoxField{
+    -fx-border-width: 1 3 1 1;
+    -fx-background-color: white;
+    -fx-border-color: gray black gray gray;
+    -fx-max-width: 50px;
+}
