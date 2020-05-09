@@ -3,6 +3,7 @@ package pl.comp;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import javafx.beans.property.Property;
@@ -10,8 +11,11 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import sudoku.Dao;
 import sudoku.DifficultyLevel;
 import sudoku.SudokuBoard;
@@ -33,6 +37,12 @@ public class PrimaryController implements Initializable {
 
     @FXML
     ComboBox<DifficultyLevel> comboBox;
+    @FXML
+    public Label labelCreatedBy;
+    @FXML
+    public Label labelAuthor1;
+    @FXML
+    public Label labelAuthor2;
 
     @FXML
     private void switchToSecondary() throws IOException {
@@ -41,6 +51,10 @@ public class PrimaryController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        ResourceBundle authors = ResourceBundle.getBundle("pl.comp.createdBy.createdBy",new Locale(App.getLanguage()));
+        labelCreatedBy.textProperty().setValue(authors.getString("createdBy"));
+        labelAuthor1.textProperty().setValue(authors.getString("author1"));
+        labelAuthor2.textProperty().setValue(authors.getString("author2"));
         comboBox.getItems().setAll(DifficultyLevel.values());
         comboBox.valueProperty().bindBidirectional(difficultyLevel);
 
@@ -53,7 +67,6 @@ public class PrimaryController implements Initializable {
         File file = fileChooser.showOpenDialog(comboBox.getScene().getWindow());
 
         if (file != null) {
-            SudokuBoardDaoFactory factory = new SudokuBoardDaoFactory();
             Dao<SudokuBoard> sudokuBoardDao;
             sudokuBoardDao = SudokuBoardDaoFactory.getFileDao(file.getAbsolutePath());
             SudokuBoard su = sudokuBoardDao.read();
@@ -62,4 +75,16 @@ public class PrimaryController implements Initializable {
 
         }
     }
+
+    public void changeLanguage() throws IOException {
+        if (App.getLanguage().matches("pl")) {
+            App.setLanguage("en");
+        }
+        else {
+            App.setLanguage("pl");
+        }
+        App.setRoot("primary");
+
+    }
+
 }

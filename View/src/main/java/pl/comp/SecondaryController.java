@@ -7,7 +7,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
-
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.adapter.JavaBeanIntegerPropertyBuilder;
 import javafx.fxml.FXML;
@@ -98,14 +97,16 @@ public class SecondaryController implements Initializable {
                     textFields.set(i * 9 + j, new TextField());
                     textFields.get(i * 9 + j).setTextFormatter(new TextFormatter<>(c -> {
                         if (c.isContentChange()) {
-                            if (c.getText().matches("[0-9]")) {
+                            if (c.getText().matches("[1-9]")) {
                                 return c;
                             }
                         }
+                        c.setText("");
                         return c;
                     }));
 
                     textFields.get(i * 9 + j).textProperty().bindBidirectional(integerProperties.get(i * 9 + j), new ModifiedNumberStringConverter());
+                    textFields.get(i * 9 + j).setId("field" + i + j);
                     if (textFields.get(i * 9 + j).textProperty().get().matches("[1-9]")) {
                         textFields.get(i * 9 + j).setEditable(false);
                         textFields.get(i * 9 + j).setCursor(Cursor.DEFAULT);
@@ -124,14 +125,14 @@ public class SecondaryController implements Initializable {
 
     public void checkSudoku() {
         if (!sudoku.checkIfSolved()) {
-            msglabel.textProperty().setValue("Sudoku nie zostalo uzupelnione");
+            msglabel.textProperty().setValue(App.getResourceBundle().getString("message1"));
             msglabel.setStyle("-fx-background-color: yellow;");
 
         } else if (!sudoku.checkBoard()) {
-            msglabel.textProperty().setValue("Sudoku zawiera bledy");
+            msglabel.textProperty().setValue(App.getResourceBundle().getString("message2"));
             msglabel.setStyle("-fx-background-color: red;");
         } else {
-            msglabel.textProperty().setValue("Sudoku zostalo uzupelnione poprawnie!");
+            msglabel.textProperty().setValue(App.getResourceBundle().getString("message3"));
             msglabel.setStyle("-fx-background-color: green;");
         }
     }
@@ -151,9 +152,11 @@ public class SecondaryController implements Initializable {
 
     }
 
+
     public SudokuBoard getSudokuBoard() {
         return sudoku;
     }
+
     public void setSudokuBoard(SudokuBoard sudoku) {
         SecondaryController.sudoku = sudoku;
     }

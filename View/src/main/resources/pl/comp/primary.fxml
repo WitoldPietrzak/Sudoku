@@ -7,13 +7,23 @@
 
 <VBox alignment="CENTER" prefHeight="800.0" prefWidth="800.0" spacing="20.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.comp.PrimaryController">
    <children>
-      <Label text="Sudoku" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Wybierz poziom trudnosci" wrappingWidth="145.13671875" />
+      <Button alignment="CENTER" mnemonicParsing="false" onAction="#changeLanguage" prefHeight="38.0" prefWidth="66.0" text="%language" textAlignment="CENTER" translateX="-350.0" translateY="-140.0" />
+      <Label fx:id="labelCreatedBy" text="Label" translateY="-110.0" />
+      <Label fx:id="labelAuthor1" text="Label" translateX="-60.0" translateY="-110.0" />
+      <Label fx:id="labelAuthor2" text="Label" translateX="60.0" translateY="-147.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="125.0" prefWidth="247.0" text="%sudoku">
+         <font>
+            <Font size="34.0" />
+         </font></Label>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%difficulty" textAlignment="CENTER" wrappingWidth="281.13671875">
+         <font>
+            <Font size="19.0" />
+         </font></Text>
 
       <ComboBox fx:id="comboBox" prefWidth="150.0">
       </ComboBox>
-      <Button fx:id="primaryButton" onAction="#switchToSecondary" text="Rozpocznij Gre" />
-      <Button mnemonicParsing="false" onAction="#loadSudokuBoard" prefHeight="25.0" prefWidth="109.0" text="Wczytaj Gre" />
+      <Button fx:id="primaryButton" onAction="#switchToSecondary" text="%begin" />
+      <Button mnemonicParsing="false" onAction="#loadSudokuBoard" prefHeight="25.0" prefWidth="109.0" text="%load" />
 
    </children>
    <padding>

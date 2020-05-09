@@ -6,12 +6,13 @@
 
 <VBox alignment="CENTER" fillWidth="false" prefHeight="800.0" prefWidth="800.0" spacing="20.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.comp.SecondaryController">
     <children>
-        <Label text="Sudoku" />
-        <Label fx:id="msglabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="307.0" style="-fx-background-color: silver;" text="Tekst" />
+        <Label text="%sudoku" />
+        <Label fx:id="msglabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="307.0" style="-fx-background-color: silver;" />
       <ButtonBar prefHeight="40.0" prefWidth="200.0">
         <buttons>
-              <Button fx:id="secondaryButton" onAction="#saveSudokuBoard" text="Zapisz Gre" />
-          <Button mnemonicParsing="false" onAction="#checkSudoku" text="Sprawdz" />
+            <Button mnemonicParsing="false" onAction="#switchToPrimary" text="%return" />
+              <Button fx:id="secondaryButton" onAction="#saveSudokuBoard" text="%save" />
+          <Button mnemonicParsing="false" onAction="#checkSudoku" text="%check" />
         </buttons>
       </ButtonBar>
         <GridPane fx:id="grid" alignment="CENTER" prefHeight="279.0" prefWidth="366.0" style="-fx-border-width: 5px;">
@@ -37,8 +38,6 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
-            <children>
-            </children>
         </GridPane>
     </children>
     <padding>

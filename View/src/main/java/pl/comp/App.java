@@ -1,6 +1,11 @@
 package pl.comp;
 
 import java.io.IOException;
+import java.io.Reader;
+import java.util.Locale;
+import java.util.Properties;
+import java.util.ResourceBundle;
+
 import javafx.application.Application;
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
@@ -17,6 +22,21 @@ import sudoku.*;
 public class App extends Application {
 
     private static Scene scene;
+    private static String language="pl";
+
+    private static ResourceBundle resourceBundle;
+
+    public static void setLanguage(String language) {
+        App.language = language;
+    }
+
+    public static String getLanguage() {
+        return language;
+    }
+
+    public static ResourceBundle getResourceBundle() {
+        return resourceBundle;
+    }
 
 
     @Override
@@ -33,7 +53,9 @@ public class App extends Application {
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+        Locale locale = new Locale(language);
+        resourceBundle = ResourceBundle.getBundle("Lang",locale);
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"),resourceBundle);
         return fxmlLoader.load();
     }
 
