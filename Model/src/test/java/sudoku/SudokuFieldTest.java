@@ -9,8 +9,8 @@ class SudokuFieldTest {
     void SudokuFieldConstructorTest() {
         SudokuField field = new SudokuField(5);
         SudokuField field2 = new SudokuField();
-        assertEquals(field.getFieldValue(), 5);
-        assertEquals(field2.getFieldValue(), 0);
+        assertEquals(field.getValue(), 5);
+        assertEquals(field2.getValue(), 0);
     }
 
     @Test
@@ -24,7 +24,7 @@ class SudokuFieldTest {
         SudokuField field = new SudokuField(5);
         SudokuField field2 = new SudokuField(5);
         assertTrue(field.equals(field2) && field2.equals(field));
-        field2.setFieldValue(4);
+        field2.setValue(4);
         assertFalse(field.equals(field2) && field2.equals(field));
         assertTrue(field.equals(field));
         SudokuBoard board = new SudokuBoard(new BacktrackingSudokuSolver());
@@ -53,7 +53,7 @@ class SudokuFieldTest {
     void testCloning() throws CloneNotSupportedException {
         SudokuField field = new SudokuField(5);
         SudokuField field2 = field.clone();
-        field2.setFieldValue(3);
+        field2.setValue(3);
 
         assertNotEquals(field, field2);
     }

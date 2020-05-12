@@ -15,15 +15,15 @@ public class SudokuBox extends SudokuFieldCollection implements Cloneable {
     }
 
     public SudokuBox clone() throws CloneNotSupportedException {
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        try (ByteArrayOutputStream bos = new ByteArrayOutputStream()) {
+            try (ObjectOutputStream oos = new ObjectOutputStream(bos)) {
+                oos.writeObject(this);
+                try (ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray())) {
+                    ObjectInputStream ois = new ObjectInputStream(bis);
+                    return (SudokuBox) ois.readObject();
+                }
+            }
 
-        try {
-            ObjectOutputStream oos = new ObjectOutputStream(bos);
-            oos.writeObject(this);
-            ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
-
-            ObjectInputStream ois = new ObjectInputStream(bis);
-            return (SudokuBox) ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
             return null;
         }
