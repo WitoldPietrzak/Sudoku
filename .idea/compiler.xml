@@ -6,13 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="ViewProject" />
         <module name="PKZ2" />
         <module name="ModelProject" />
         <module name="View" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="View" target="11" />
       <module name="ViewProject" target="11" />
     </bytecodeTargetLevel>
   </component>
