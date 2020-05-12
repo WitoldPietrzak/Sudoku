@@ -50,7 +50,7 @@ class SudokuBoardTest {
         SudokuBoard sudoku1 = new SudokuBoard(new BacktrackingSudokuSolver());
         assertTrue(sudoku.equals(sudoku));
         assertTrue(sudoku.equals(sudoku1) && sudoku1.equals(sudoku));
-        sudoku.set(3,3,5);
+        sudoku.set(3, 3, 5);
         assertFalse(sudoku.equals(sudoku1) && sudoku1.equals(sudoku));
         SudokuField sudokuPole = new SudokuField(4);
         assertFalse(sudoku.equals(sudokuPole));
@@ -67,7 +67,37 @@ class SudokuBoardTest {
     void testClonable() throws CloneNotSupportedException {
         SudokuBoard sudoku = new SudokuBoard(new BacktrackingSudokuSolver());
         SudokuBoard sudoku1 = sudoku.clone();
-        sudoku1.set(0,0,5);
+        sudoku1.set(0, 0, 5);
         assertNotEquals(sudoku, sudoku1);
     }
+
+    @Test
+    void testGetField() {
+        SudokuBoard sudoku = new SudokuBoard(new BacktrackingSudokuSolver());
+        SudokuField field = new SudokuField();
+        field.setValue(0);
+        assertEquals(field, sudoku.getField(0, 0));
+        field.setValue(1);
+        assertNotEquals(field, sudoku.getField(0, 0));
+    }
+
+    @Test
+    void testCheckIfSolved() {
+        SudokuBoard sudoku = new SudokuBoard(new BacktrackingSudokuSolver());
+        assertFalse(sudoku.checkIfSolved());
+        sudoku.solveGame();
+        assertTrue(sudoku.checkIfSolved());
+
+    }
+
+    @Test
+    void testCheckIfEmpty() {
+        SudokuBoard sudoku = new SudokuBoard(new BacktrackingSudokuSolver());
+        assertTrue(sudoku.checkIfEmpty());
+        sudoku.set(0,1,3);
+        assertFalse(sudoku.checkIfEmpty());
+
+    }
+
+
 }

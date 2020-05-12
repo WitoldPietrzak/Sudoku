@@ -15,15 +15,15 @@ public class SudokuColumn extends SudokuFieldCollection implements Cloneable, Se
 
 
     public SudokuColumn clone() throws CloneNotSupportedException {
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        try (ByteArrayOutputStream bos = new ByteArrayOutputStream()) {
+            try (ObjectOutputStream oos = new ObjectOutputStream(bos)) {
+                oos.writeObject(this);
+                try (ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray())) {
+                    ObjectInputStream ois = new ObjectInputStream(bis);
+                    return (SudokuColumn) ois.readObject();
+                }
+            }
 
-        try {
-            ObjectOutputStream oos = new ObjectOutputStream(bos);
-            oos.writeObject(this);
-            ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
-
-            ObjectInputStream ois = new ObjectInputStream(bis);
-            return (SudokuColumn) ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
             return null;
         }

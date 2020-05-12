@@ -28,6 +28,7 @@ public class SudokuBoard implements Serializable, Cloneable {
      * solver, which is used to solve sudoku.
      */
     private SudokuSolver solver;
+
     /**
      * Returns the size of the board.
      *
@@ -46,7 +47,11 @@ public class SudokuBoard implements Serializable, Cloneable {
      * @return returns the value of given field.
      */
     public final int get(final int rowNumber, final int columnNumber) {
-        return board.get(rowNumber * SUDOKU_SIZE + columnNumber).getFieldValue();
+        return board.get(rowNumber * SUDOKU_SIZE + columnNumber).getValue();
+    }
+
+    public final SudokuField getField(final int rowNumver, final int columnNumber) {
+        return board.get(rowNumver * SUDOKU_SIZE + columnNumber);
     }
 
     /**
@@ -59,7 +64,7 @@ public class SudokuBoard implements Serializable, Cloneable {
     public final void set(final int rowNumber,
                           final int columnNumber, final int value) {
 
-        board.get(rowNumber * SUDOKU_SIZE + columnNumber).setFieldValue(value);
+        board.get(rowNumber * SUDOKU_SIZE + columnNumber).setValue(value);
     }
 
     public SudokuBoard(SudokuSolver solver) {
@@ -106,12 +111,44 @@ public class SudokuBoard implements Serializable, Cloneable {
      */
     public final boolean checkBoard() {
         for (int i = 0; i < SUDOKU_SIZE; i++) {
-            if (!(getColumn(i).verify() && getRow(i).verify() && getBox(i, i).verify())) {
+
+            if (!(getColumn(i).verify() && getRow(i).verify())) {
+
                 return false;
+            }
+
+            if(i%3==0){
+                if(!getBox(i,i).verify()){
+                    return false;
+                }
+            }
+
+        }
+        return true;
+    }
+
+    public final boolean checkIfSolved() {
+        for (int i = 0; i < SUDOKU_SIZE; i++) {
+            for (int j = 0; j < SUDOKU_SIZE; j++){
+                if (this.get(i,j)==0){
+                    return false;
+                }
             }
         }
         return true;
     }
+
+    public final boolean checkIfEmpty() {
+        for (int i = 0; i < SUDOKU_SIZE; i++) {
+            for (int j = 0; j < SUDOKU_SIZE; j++){
+                if (this.get(i,j)!=0){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
 
     /**
      * Solves sudoku board using BacktrackingSudokuSolver.
@@ -143,18 +180,34 @@ public class SudokuBoard implements Serializable, Cloneable {
     }
 
     public SudokuBoard clone() throws CloneNotSupportedException {
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        try (ByteArrayOutputStream bos = new ByteArrayOutputStream()) {
+            try (ObjectOutputStream oos = new ObjectOutputStream(bos)) {
+                oos.writeObject(this);
+                try (ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray())) {
+                    ObjectInputStream ois = new ObjectInputStream(bis);
+                    return (SudokuBoard) ois.readObject();
+                }
+            }
 
-        try {
-            ObjectOutputStream oos = new ObjectOutputStream(bos);
-            oos.writeObject(this);
-            ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
-
-            ObjectInputStream ois = new ObjectInputStream(bis);
-            return (SudokuBoard) ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
             return null;
         }
     }
+    /*
+    public void testowyWypis() {
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (this.get(i, j) == 0) {
+                    System.out.print(" ");
+                } else {
+                    System.out.print(this.get(i, j));
+                }
+                System.out.print(" ");
+            }
+            System.out.print("\n");
+        }
+        System.out.print("\n");
+        System.out.print("\n");
+    }*/
 }
 
