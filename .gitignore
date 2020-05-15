@@ -1,10 +1,15 @@
 #ignoring zip files
 *.zip
+*.zipp
 
 #ignoring target folder
 target/
 
 #ignoring txt files
 *.txt
-.idea/codeStyles/codeStyleConfig.xml
-.idea/workspace.xml
+
+#ignoring .idea
+.idea/
+
+#ignoring fullsite report folder
+fullsite/

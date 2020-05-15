@@ -3,18 +3,17 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
-        <groupId>pl.comp</groupId>
         <artifactId>SudokuGameProject</artifactId>
+        <groupId>pl.comp</groupId>
         <version>2.0-SNAPSHOT</version>
     </parent>
-    <artifactId>ModelProject</artifactId>
-    <packaging>jar</packaging>
-    <version>2.0-SNAPSHOT</version>
 
-    <name>SudokuModel</name>
-    <url>http://maven.apache.org</url>
+
+    <artifactId>Dao</artifactId>
+    <packaging>jar</packaging>
+
+    <name>${project.artifactId}</name>
 
     <reporting>
         <plugins>
@@ -26,8 +25,28 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+            </plugin>
         </plugins>
     </reporting>
+
+    <dependencies>
+        <dependency>
+            <groupId>pl.comp</groupId>
+            <artifactId>ModelProject</artifactId>
+            <version>2.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
@@ -42,6 +61,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.5</version>
                 <executions>
                     <execution>
                         <id>default-prepare-agent</id>
@@ -80,18 +100,5 @@
         </plugins>
     </build>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-        </dependency>
-    </dependencies>
+
 </project>
