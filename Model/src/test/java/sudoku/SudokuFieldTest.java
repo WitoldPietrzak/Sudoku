@@ -1,12 +1,16 @@
 package sudoku;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 class SudokuFieldTest {
     @Test
-    void SudokuFieldConstructorTest() {
+    void sudokuFieldConstructorTest() {
         SudokuField field = new SudokuField(5);
         SudokuField field2 = new SudokuField();
         assertEquals(field.getValue(), 5);
@@ -49,6 +53,7 @@ class SudokuFieldTest {
         assertEquals(field.compareTo(field3),1);
         assertEquals(field.compareTo(field4),-1);
     }
+
     @Test
     void testCloning() throws CloneNotSupportedException {
         SudokuField field = new SudokuField(5);

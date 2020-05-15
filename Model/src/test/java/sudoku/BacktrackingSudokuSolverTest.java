@@ -1,8 +1,9 @@
 package sudoku;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 class BacktrackingSudokuSolverTest {
 
@@ -10,7 +11,7 @@ class BacktrackingSudokuSolverTest {
     void solve() throws CloneNotSupportedException {
         SudokuBoard sudoku = new SudokuBoard(new BacktrackingSudokuSolver());
         for (int i = 0; i < sudoku.getSudokuSize(); i++) {
-            for (int j = 0; j < sudoku.getSudokuSize(); j++){
+            for (int j = 0; j < sudoku.getSudokuSize(); j++) {
                 sudoku.set(i,j,0);
             }
         }

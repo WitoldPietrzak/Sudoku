@@ -10,45 +10,54 @@
     <packaging>pom</packaging>
     <modules>
         <module>Model</module>
-        <module>View</module>
+        <module>Dao</module>
+<!--        <module>SudokuDao</module>-->
+        <module>SudokuView</module>
     </modules>
 
     <name>SudokuGame</name>
     <url>http://maven.apache.org</url>
 
-    <reporting>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>3.1.1</version>
-                <configuration>
-                    <configLocation>checkstyle2020.xml</configLocation>
-                    <encoding>UTF-8</encoding>
-                    <consoleOutput>true</consoleOutput>
-                    <linkXRef>false</linkXRef>
-                </configuration>
-                <reportSets>
-                    <reportSet>
-                        <reports>
-                            <report>checkstyle</report>
-                        </reports>
-                    </reportSet>
-                </reportSets>
-            </plugin>
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <reportSets>
-                    <reportSet>
-                        <reports>
-                            <report>report</report>
-                        </reports>
-                    </reportSet>
-                </reportSets>
-            </plugin>
-        </plugins>
-    </reporting>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.release>11</maven.compiler.release>
+        <javafx.version>13</javafx.version>
+    </properties>
+
+<!--    <reporting>-->
+<!--        <plugins>-->
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-checkstyle-plugin</artifactId>-->
+<!--                <version>3.1.1</version>-->
+<!--                <configuration>-->
+<!--                    <excludes>\module-info.java</excludes>-->
+<!--                    <configLocation>../checkstyle2020.xml</configLocation>-->
+<!--                    <encoding>UTF-8</encoding>-->
+<!--                    <consoleOutput>true</consoleOutput>-->
+<!--                    <linkXRef>false</linkXRef>-->
+<!--                </configuration>-->
+<!--                <reportSets>-->
+<!--                    <reportSet>-->
+<!--                        <reports>-->
+<!--                            <report>checkstyle</report>-->
+<!--                        </reports>-->
+<!--                    </reportSet>-->
+<!--                </reportSets>-->
+<!--            </plugin>-->
+<!--            <plugin>-->
+<!--                <groupId>org.jacoco</groupId>-->
+<!--                <artifactId>jacoco-maven-plugin</artifactId>-->
+<!--                <reportSets>-->
+<!--                    <reportSet>-->
+<!--                        <reports>-->
+<!--                            <report>report</report>-->
+<!--                        </reports>-->
+<!--                    </reportSet>-->
+<!--                </reportSets>-->
+<!--            </plugin>-->
+<!--        </plugins>-->
+<!--    </reporting>-->
 
     <build>
         <pluginManagement>
@@ -62,6 +71,9 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.8.1</version>
+                    <configuration>
+                        <release>${maven.compiler.release}</release>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -73,11 +85,13 @@
                     <artifactId>maven-checkstyle-plugin</artifactId>
                     <version>3.1.1</version>
                     <configuration>
+                        <excludes>\module-info.java</excludes>
                         <configLocation>checkstyle2020.xml</configLocation>
                         <encoding>UTF-8</encoding>
                         <consoleOutput>true</consoleOutput>
-                        <failsOnError>true</failsOnError>
+                        <failsOnError>false</failsOnError>
                         <linkXRef>false</linkXRef>
+                        <includeTestSourceDirectory>true</includeTestSourceDirectory>
                     </configuration>
                     <executions>
                         <execution>
@@ -100,53 +114,45 @@
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
                     <version>0.8.5</version>
-                    <executions>
-                        <execution>
-                            <id>default-prepare-agent</id>
-                            <goals>
-                                <goal>prepare-agent</goal>
-                            </goals>
-                        </execution>
-                        <execution>
-                            <id>default-report</id>
-                            <goals>
-                                <goal>report</goal>
-                            </goals>
-                        </execution>
-                        <execution>
-                            <id>default-check</id>
-                            <goals>
-                                <goal>check</goal>
-                            </goals>
-                            <configuration>
-                                <rules>
-                                    <rule>
-                                        <element>BUNDLE</element>
-                                        <limits>
-                                            <limit>
-                                                <counter>COMPLEXITY</counter>
-                                                <value>COVEREDRATIO</value>
-                                                <minimum>0.60</minimum>
-                                            </limit>
-                                        </limits>
-                                    </rule>
-                                </rules>
-                            </configuration>
-                        </execution>
-                    </executions>
+<!--                    <executions>-->
+<!--                        <execution>-->
+<!--                            <id>default-prepare-agent</id>-->
+<!--                            <goals>-->
+<!--                                <goal>prepare-agent</goal>-->
+<!--                            </goals>-->
+<!--                        </execution>-->
+<!--                        <execution>-->
+<!--                            <id>default-report</id>-->
+<!--                            <goals>-->
+<!--                                <goal>report</goal>-->
+<!--                            </goals>-->
+<!--                        </execution>-->
+<!--                        <execution>-->
+<!--                            <id>default-check</id>-->
+<!--                            <goals>-->
+<!--                                <goal>check</goal>-->
+<!--                            </goals>-->
+<!--                            <configuration>-->
+<!--                                <rules>-->
+<!--                                    <rule>-->
+<!--                                        <element>BUNDLE</element>-->
+<!--                                        <limits>-->
+<!--                                            <limit>-->
+<!--                                                <counter>COMPLEXITY</counter>-->
+<!--                                                <value>COVEREDRATIO</value>-->
+<!--                                                <minimum>0.60</minimum>-->
+<!--                                            </limit>-->
+<!--                                        </limits>-->
+<!--                                    </rule>-->
+<!--                                </rules>-->
+<!--                            </configuration>-->
+<!--                        </execution>-->
+<!--                    </executions>-->
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-site-plugin</artifactId>
                     <version>3.8.2</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.openjfx</groupId>
-                    <artifactId>javafx-maven-plugin</artifactId>
-                    <version>0.0.3</version>
-                    <configuration>
-                        <mainClass>App</mainClass>
-                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -182,16 +188,17 @@
                 <artifactId>javafx-fxml</artifactId>
                 <version>11</version>
             </dependency>
-            <dependency>
-                <groupId>pl.comp</groupId>
-                <artifactId>ModelProject</artifactId>
-                <version>2.0-SNAPSHOT</version>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>pl.comp</groupId>-->
+<!--                <artifactId>ModelProject</artifactId>-->
+<!--                <version>2.0-SNAPSHOT</version>-->
+<!--            </dependency>-->
         </dependencies>
     </dependencyManagement>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-    </properties>
+    <distributionManagement>
+        <site>
+            <id>www.yourcompany.com</id>
+            <url>scp://www.yourcompany.com/www/docs/project/</url>
+        </site>
+    </distributionManagement>
 </project>

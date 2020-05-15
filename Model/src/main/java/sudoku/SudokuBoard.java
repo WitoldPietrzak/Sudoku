@@ -117,8 +117,8 @@ public class SudokuBoard implements Serializable, Cloneable {
                 return false;
             }
 
-            if(i%3==0){
-                if(!getBox(i,i).verify()){
+            if (i % 3 == 0) {
+                if (!getBox(i,i).verify()) {
                     return false;
                 }
             }
@@ -129,8 +129,8 @@ public class SudokuBoard implements Serializable, Cloneable {
 
     public final boolean checkIfSolved() {
         for (int i = 0; i < SUDOKU_SIZE; i++) {
-            for (int j = 0; j < SUDOKU_SIZE; j++){
-                if (this.get(i,j)==0){
+            for (int j = 0; j < SUDOKU_SIZE; j++) {
+                if (this.get(i,j) == 0) {
                     return false;
                 }
             }
@@ -140,8 +140,8 @@ public class SudokuBoard implements Serializable, Cloneable {
 
     public final boolean checkIfEmpty() {
         for (int i = 0; i < SUDOKU_SIZE; i++) {
-            for (int j = 0; j < SUDOKU_SIZE; j++){
-                if (this.get(i,j)!=0){
+            for (int j = 0; j < SUDOKU_SIZE; j++) {
+                if (this.get(i,j) != 0) {
                     return false;
                 }
             }
