@@ -5,7 +5,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import sudoku.FileException;
+import pl.comp.dao.exceptions.DaoReadException;
+import pl.comp.dao.exceptions.DaoWriteException;
 import sudoku.SudokuBoard;
 
 
@@ -24,7 +25,7 @@ public class FileSudokuBoardDao implements Dao<SudokuBoard>, AutoCloseable {
              ObjectInputStream objectInput = new ObjectInputStream(fileInput)) {
             object = (SudokuBoard) objectInput.readObject();
         } catch (ClassNotFoundException | IOException exception) {
-            throw new FileException(exception);
+            throw new DaoReadException(exception);
         }
 
         return object;
@@ -36,7 +37,7 @@ public class FileSudokuBoardDao implements Dao<SudokuBoard>, AutoCloseable {
              ObjectOutputStream objectOut = new ObjectOutputStream(fileOut)) {
             objectOut.writeObject(obj);
         } catch (IOException exception) {
-            throw new FileException(exception);
+            throw new DaoWriteException(exception);
         }
 
     }
