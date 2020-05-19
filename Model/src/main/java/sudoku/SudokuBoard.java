@@ -11,7 +11,10 @@ import java.util.List;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import sudoku.exceptions.SudokuFieldException;
+
 
 /**
  * Class Generating valid 9 by 9 sudoku board.
@@ -29,6 +32,8 @@ public class SudokuBoard implements Serializable, Cloneable {
      * solver, which is used to solve sudoku.
      */
     private SudokuSolver solver;
+
+    private static final Logger logger = LoggerFactory.getLogger(SudokuBoard.class);
 
     /**
      * Returns the size of the board.
@@ -73,6 +78,7 @@ public class SudokuBoard implements Serializable, Cloneable {
     }
 
     public SudokuBoard(SudokuSolver solver) {
+        logger.info("SudokuBoard constructed.");
         this.solver = solver;
         for (int i = 0; i < this.board.size(); i++) {
             this.board.set(i, new SudokuField());
