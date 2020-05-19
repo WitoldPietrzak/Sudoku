@@ -18,6 +18,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import pl.comp.dao.Dao;
 import pl.comp.dao.SudokuBoardDaoFactory;
+import pl.comp.dao.exceptions.DaoWriteException;
 import sudoku.BacktrackingSudokuSolver;
 import sudoku.SudokuBoard;
 import sudoku.SudokuFieldRemover;
@@ -107,7 +108,7 @@ public class SecondaryController implements Initializable {
         }
     }
 
-    public void saveSudokuBoard() {
+    public void saveSudokuBoard() throws DaoWriteException {
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)",
                 "*.txt");

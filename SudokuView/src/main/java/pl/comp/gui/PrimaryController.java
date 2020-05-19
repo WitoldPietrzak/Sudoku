@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.stage.FileChooser;
 import pl.comp.dao.Dao;
 import pl.comp.dao.SudokuBoardDaoFactory;
+import pl.comp.dao.exceptions.DaoReadException;
 import sudoku.DifficultyLevel;
 import sudoku.SudokuBoard;
 
@@ -60,7 +61,7 @@ public class PrimaryController implements Initializable {
 
     }
 
-    public void loadSudokuBoard() throws IOException {
+    public void loadSudokuBoard() throws IOException, DaoReadException {
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
                 "TXT files (*.txt)", "*.txt");

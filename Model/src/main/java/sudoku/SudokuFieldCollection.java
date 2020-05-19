@@ -5,12 +5,20 @@ import java.util.List;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import sudoku.exceptions.SudokuFieldCollectionException;
 
 
 public abstract class SudokuFieldCollection implements Serializable {
     protected List<SudokuField> link;
 
     public SudokuFieldCollection(List<SudokuField> fields) {
+        if (fields.size() != 9) {
+            try {
+                throw new SudokuFieldCollectionException("_size");
+            } catch (SudokuFieldCollectionException e) {
+                e.printStackTrace();
+            }
+        }
         this.link = fields;
     }
 

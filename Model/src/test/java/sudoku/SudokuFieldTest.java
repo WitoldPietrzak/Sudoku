@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
+import sudoku.exceptions.SudokuFieldException;
 
 class SudokuFieldTest {
     @Test
@@ -24,7 +25,7 @@ class SudokuFieldTest {
     }
 
     @Test
-    void testEquals() {
+    void testEquals() throws SudokuFieldException {
         SudokuField field = new SudokuField(5);
         SudokuField field2 = new SudokuField(5);
         assertTrue(field.equals(field2) && field2.equals(field));
@@ -61,5 +62,10 @@ class SudokuFieldTest {
         field2.setValue(3);
 
         assertNotEquals(field, field2);
+    }
+
+    @Test
+    void exceptionTest() {
+        SudokuField field = new SudokuField(20);
     }
 }
