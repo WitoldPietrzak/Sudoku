@@ -15,20 +15,16 @@ public class SudokuField implements Serializable, Cloneable, Comparable<SudokuFi
 
 
     public SudokuField(int value) {
-        this.setValue(value);
+        this.value = value;
     }
 
     public SudokuField() {
         this.value = 0;
     }
 
-    public final void setValue(int value) {
+    public final void setValue(int value) throws SudokuFieldException {
         if (value < 0 || value > 9) {
-            try {
-                throw new SudokuFieldException("_value");
-            } catch (SudokuFieldException e) {
-                e.printStackTrace();
-            }
+            throw new SudokuFieldException("_value");
         }
         this.value = value;
     }

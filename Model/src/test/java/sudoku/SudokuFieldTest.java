@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
@@ -56,7 +57,7 @@ class SudokuFieldTest {
     }
 
     @Test
-    void testCloning() throws CloneNotSupportedException {
+    void testCloning() throws CloneNotSupportedException, SudokuFieldException {
         SudokuField field = new SudokuField(5);
         SudokuField field2 = field.clone();
         field2.setValue(3);
@@ -66,6 +67,7 @@ class SudokuFieldTest {
 
     @Test
     void exceptionTest() {
-        SudokuField field = new SudokuField(20);
+        SudokuField field = new SudokuField(8);
+        assertThrows(SudokuFieldException.class, () -> field.setValue(20));
     }
 }
