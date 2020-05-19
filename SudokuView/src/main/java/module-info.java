@@ -1,5 +1,4 @@
 module SudokuView {
-//    requires SudokuDao;
     requires javafx.controls;
     requires javafx.fxml;
     requires ModelProject;

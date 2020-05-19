@@ -15,7 +15,7 @@ class FileSudokuBoardDaoTest {
     private Dao<SudokuBoard> sudokuBoardDao;
 
     @Test
-    void writeReadTest() {
+    void writeReadTest() throws DaoWriteException, DaoReadException {
         sudokuBoardDao = SudokuBoardDaoFactory.getFileDao("test.txt");
         sudokuBoardDao.write(board1);
         board2 = sudokuBoardDao.read();
@@ -24,9 +24,11 @@ class FileSudokuBoardDaoTest {
     }
 
     @Test
-    void readFileExceptionTest() {
+    void readFileExceptionTest() throws DaoReadException {
         sudokuBoardDao = SudokuBoardDaoFactory.getFileDao("test1.txt");
         assertThrows(DaoReadException.class, () -> sudokuBoardDao.read());
+
+
     }
 
     @Test

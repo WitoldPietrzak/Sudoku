@@ -4,6 +4,7 @@ import java.io.Serializable;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import sudoku.exceptions.SudokuFieldException;
 
 public class SudokuField implements Serializable, Cloneable, Comparable<SudokuField> {
     private int value;
@@ -14,7 +15,7 @@ public class SudokuField implements Serializable, Cloneable, Comparable<SudokuFi
 
 
     public SudokuField(int value) {
-        this.value = value;
+        this.setValue(value);
     }
 
     public SudokuField() {
@@ -22,6 +23,13 @@ public class SudokuField implements Serializable, Cloneable, Comparable<SudokuFi
     }
 
     public final void setValue(int value) {
+        if (value < 0 || value > 9) {
+            try {
+                throw new SudokuFieldException("_value");
+            } catch (SudokuFieldException e) {
+                e.printStackTrace();
+            }
+        }
         this.value = value;
     }
 

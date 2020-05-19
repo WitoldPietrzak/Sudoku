@@ -18,26 +18,26 @@ public class FileSudokuBoardDao implements Dao<SudokuBoard>, AutoCloseable {
     }
 
     @Override
-    public SudokuBoard read() {
+    public SudokuBoard read() throws DaoReadException {
         SudokuBoard object = null;
 
         try (FileInputStream fileInput = new FileInputStream(fileName);
              ObjectInputStream objectInput = new ObjectInputStream(fileInput)) {
             object = (SudokuBoard) objectInput.readObject();
         } catch (ClassNotFoundException | IOException exception) {
-            throw new DaoReadException(exception);
+            throw new DaoReadException("read");
         }
 
         return object;
     }
 
     @Override
-    public void write(SudokuBoard obj) {
+    public void write(SudokuBoard obj) throws DaoWriteException {
         try (FileOutputStream fileOut = new FileOutputStream(fileName);
              ObjectOutputStream objectOut = new ObjectOutputStream(fileOut)) {
             objectOut.writeObject(obj);
         } catch (IOException exception) {
-            throw new DaoWriteException(exception);
+            throw new DaoWriteException("write", exception);
         }
 
     }
