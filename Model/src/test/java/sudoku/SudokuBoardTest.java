@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
+import sudoku.exceptions.SudokuFieldException;
 
 
 class SudokuBoardTest {
@@ -77,7 +78,7 @@ class SudokuBoardTest {
     }
 
     @Test
-    void testGetField() {
+    void testGetField() throws SudokuFieldException {
         SudokuBoard sudoku = new SudokuBoard(new BacktrackingSudokuSolver());
         SudokuField field = new SudokuField();
         field.setValue(0);

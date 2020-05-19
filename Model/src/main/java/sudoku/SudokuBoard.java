@@ -11,6 +11,7 @@ import java.util.List;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import sudoku.exceptions.SudokuFieldException;
 
 /**
  * Class Generating valid 9 by 9 sudoku board.
@@ -64,7 +65,11 @@ public class SudokuBoard implements Serializable, Cloneable {
     public final void set(final int rowNumber,
                           final int columnNumber, final int value) {
 
-        board.get(rowNumber * SUDOKU_SIZE + columnNumber).setValue(value);
+        try {
+            board.get(rowNumber * SUDOKU_SIZE + columnNumber).setValue(value);
+        } catch (SudokuFieldException e) {
+            e.printStackTrace();
+        }
     }
 
     public SudokuBoard(SudokuSolver solver) {
