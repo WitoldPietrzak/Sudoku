@@ -8,6 +8,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * JavaFX App.
@@ -30,6 +32,9 @@ public class App extends Application {
     public static ResourceBundle getResourceBundle() {
         return resourceBundle;
     }
+
+    private static final Logger logger = LoggerFactory.getLogger(App.class);
+
 
 
     @Override
@@ -54,7 +59,10 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
+        logger.info("Start of Application");
         launch();
+
     }
+
 
 }

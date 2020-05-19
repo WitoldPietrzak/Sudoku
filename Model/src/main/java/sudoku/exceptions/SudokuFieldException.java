@@ -2,6 +2,7 @@ package sudoku.exceptions;
 
 import java.util.ResourceBundle;
 
+
 public class SudokuFieldException extends Exception {
     ResourceBundle bundle = ResourceBundle.getBundle("Language");
 

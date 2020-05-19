@@ -14,6 +14,23 @@ public class SudokuBox extends SudokuFieldCollection implements Cloneable {
         super(fields);
     }
 
+    //    public SudokuBox clone() {
+    //        SudokuBox object = null;
+    //        try (ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
+    //             ObjectOutputStream objOut = new ObjectOutputStream(byteOut);
+    //             ByteArrayInputStream byteIn = new ByteArrayInputStream(byteOut.toByteArray());
+    //             ObjectInputStream objIn = new ObjectInputStream(byteIn)) {
+    //            objOut.writeObject(this);
+    //            object = (SudokuBox) objIn.readObject();
+    //        } catch (IOException | ClassNotFoundException e) {
+    //            try {
+    //                throw new SudokuCloneException("clone error");
+    //            } catch (SudokuCloneException ex) {
+    //                ex.printStackTrace();
+    //            }
+    //        }
+    //        return object;
+    //    }
     public SudokuBox clone() throws CloneNotSupportedException {
         try (ByteArrayOutputStream bos = new ByteArrayOutputStream()) {
             try (ObjectOutputStream oos = new ObjectOutputStream(bos)) {

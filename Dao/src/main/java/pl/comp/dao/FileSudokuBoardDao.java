@@ -5,13 +5,17 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pl.comp.dao.exceptions.DaoReadException;
 import pl.comp.dao.exceptions.DaoWriteException;
 import sudoku.SudokuBoard;
 
 
+
 public class FileSudokuBoardDao implements Dao<SudokuBoard>, AutoCloseable {
     private String fileName;
+    private static final Logger logger = LoggerFactory.getLogger(FileSudokuBoardDao.class);
 
     public FileSudokuBoardDao(String filename) {
         this.fileName = filename;
@@ -25,6 +29,7 @@ public class FileSudokuBoardDao implements Dao<SudokuBoard>, AutoCloseable {
              ObjectInputStream objectInput = new ObjectInputStream(fileInput)) {
             object = (SudokuBoard) objectInput.readObject();
         } catch (ClassNotFoundException | IOException exception) {
+            logger.error("DaoReadException");
             throw new DaoReadException("read");
         }
 
@@ -37,6 +42,7 @@ public class FileSudokuBoardDao implements Dao<SudokuBoard>, AutoCloseable {
              ObjectOutputStream objectOut = new ObjectOutputStream(fileOut)) {
             objectOut.writeObject(obj);
         } catch (IOException exception) {
+            logger.error("DaoWriteException");
             throw new DaoWriteException("write", exception);
         }
 

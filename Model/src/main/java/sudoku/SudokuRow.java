@@ -22,7 +22,6 @@ public class SudokuRow extends SudokuFieldCollection implements Cloneable, Seria
                     return (SudokuRow) ois.readObject();
                 }
             }
-
         } catch (IOException | ClassNotFoundException e) {
             return null;
         }
