@@ -84,6 +84,7 @@ public class PrimaryController implements Initializable {
         } else {
             App.setLanguage("pl");
         }
+        difficultyLevel.getValue().setLang(App.getLanguage());
         App.setRoot("primary");
     }
 
