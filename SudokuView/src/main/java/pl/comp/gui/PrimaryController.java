@@ -16,6 +16,7 @@ import javafx.stage.FileChooser;
 import pl.comp.dao.Dao;
 import pl.comp.dao.SudokuBoardDaoFactory;
 import pl.comp.dao.exceptions.DaoReadException;
+import sudoku.BacktrackingSudokuSolver;
 import sudoku.DifficultyLevel;
 import sudoku.SudokuBoard;
 
@@ -46,6 +47,8 @@ public class PrimaryController implements Initializable {
 
     @FXML
     private void switchToSecondary() throws IOException {
+        SudokuBoard su = new SudokuBoard(new BacktrackingSudokuSolver());
+        new SecondaryController().setSudokuBoard(su);
         App.setRoot("secondary");
     }
 
