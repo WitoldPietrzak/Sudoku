@@ -61,7 +61,7 @@ public class PrimaryController implements Initializable {
 
     }
 
-    public void loadSudokuBoard() throws IOException, DaoReadException {
+    public void loadSudokuBoard() throws IOException, DaoReadException, ClassNotFoundException {
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
                 "TXT files (*.txt)", "*.txt");
