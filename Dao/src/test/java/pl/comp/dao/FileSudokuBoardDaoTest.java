@@ -15,7 +15,7 @@ class FileSudokuBoardDaoTest {
     private Dao<SudokuBoard> sudokuBoardDao;
 
     @Test
-    void writeReadTest() throws DaoWriteException, DaoReadException {
+    void writeReadTest() throws DaoWriteException, DaoReadException, ClassNotFoundException {
         sudokuBoardDao = SudokuBoardDaoFactory.getFileDao("test.txt");
         sudokuBoardDao.write(board1);
         board2 = sudokuBoardDao.read();

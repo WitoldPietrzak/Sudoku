@@ -108,7 +108,7 @@ public class SecondaryController implements Initializable {
         }
     }
 
-    public void saveSudokuBoard() throws DaoWriteException {
+    public void saveSudokuBoard() throws DaoWriteException, ClassNotFoundException {
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)",
                 "*.txt");

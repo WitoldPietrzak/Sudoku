@@ -1,18 +1,18 @@
 package pl.comp.dao;
 
+import java.io.*;
+import java.sql.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pl.comp.dao.exceptions.DaoReadException;
 import pl.comp.dao.exceptions.DaoWriteException;
 import sudoku.SudokuBoard;
 
-import java.sql.*;
-import java.util.ResourceBundle;
 
 public class JdbcSudokuBoardDao implements Dao<SudokuBoard>, AutoCloseable {
 
     private String fileName;
-    private String URL = "jdbc:derby://localhost/dbname";
+    private String databaseUrl = "jdbc:derby://localhost:1527/dbname";
     private static final Logger logger = LoggerFactory.getLogger(JdbcSudokuBoardDao.class);
 
     public JdbcSudokuBoardDao(String filename) {
@@ -26,16 +26,23 @@ public class JdbcSudokuBoardDao implements Dao<SudokuBoard>, AutoCloseable {
     }
 
     @Override
-    public SudokuBoard read() throws DaoReadException {
+    public SudokuBoard read() throws DaoReadException, ClassNotFoundException {
+        //Class.forName("org.apache.derby.jdbc.ClientDriver");
         SudokuBoard sudokuBoard = null;
-        try (Connection connection = DriverManager.getConnection(URL);
-             PreparedStatement statement = connection.prepareStatement("SELECT sudokuData from sudokus WHERE id = ?")) {
+        try (Connection connection = DriverManager.getConnection(databaseUrl);
+             PreparedStatement statement =
+                     connection.prepareStatement("SELECT sudokuData from sudokus WHERE id = ?")) {
             statement.setString(1, fileName);
             try (ResultSet resultSet = statement.executeQuery()) {
                 resultSet.next();
-                sudokuBoard = (SudokuBoard) resultSet.getObject(1);
+                byte[] buf = resultSet.getBytes(1);
+                ObjectInputStream ois = null;
+                if (buf != null) {
+                    ois = new ObjectInputStream(new ByteArrayInputStream(buf));
+                    sudokuBoard = (SudokuBoard) ois.readObject();
+                }
             }
-        } catch (SQLException e) {
+        } catch (SQLException | IOException e) {
             e.printStackTrace();
             logger.error("DaoReadException");
             throw new DaoReadException("read");
@@ -44,26 +51,40 @@ public class JdbcSudokuBoardDao implements Dao<SudokuBoard>, AutoCloseable {
     }
 
     @Override
-    public void write(SudokuBoard obj) throws DaoWriteException {
-        try (Connection connection = DriverManager.getConnection(URL);
-             PreparedStatement statement = connection.prepareStatement("SELECT sudokuData from sudokus WHERE id = ?")) {
+    public void write(SudokuBoard obj) throws DaoWriteException, ClassNotFoundException {
+        //Class.forName("org.apache.derby.jdbc.ClientDriver");
+        try (Connection connection = DriverManager.getConnection(databaseUrl);
+             PreparedStatement statement =
+                     connection.prepareStatement("SELECT sudokuData from sudokus WHERE id = ?")) {
             statement.setString(1, fileName);
             try (ResultSet resultSet = statement.executeQuery()) {
-                if (resultSet.next() == false) {
-                    try (PreparedStatement statement2 = connection.prepareStatement("INSERT INTO sudokus(id,sudokuData) VALUES(?,?)")) {
+                if (!resultSet.next()) {
+                    try (PreparedStatement statement2 =
+                                 connection.prepareStatement("INSERT INTO sudokus(id,sudokuData) VALUES(?,?)");
+                         ByteArrayOutputStream baos =
+                                 new ByteArrayOutputStream(); ObjectOutputStream oos = new ObjectOutputStream(baos)) {
+                        oos.writeObject(obj);
+                        InputStream is = new ByteArrayInputStream(baos.toByteArray());
                         statement2.setString(1, fileName);
-                        statement2.setObject(2, obj);
+                        statement2.setBlob(2, is);
+                        statement2.executeUpdate();
                     }
                 } else {
-                    try (PreparedStatement statement2 = connection.prepareStatement("UPDATE sudokus SET sudokuData = ? WHERE id = ? ")) {
+                    try (PreparedStatement statement2 =
+                                 connection.prepareStatement("UPDATE sudokus SET sudokuData = ? WHERE id = ? ");
+                         ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                         ObjectOutputStream oos = new ObjectOutputStream(baos)) {
+                        oos.writeObject(obj);
+                        InputStream is = new ByteArrayInputStream(baos.toByteArray());
                         statement2.setString(2, fileName);
-                        statement2.setObject(1, obj);
+                        statement2.setBlob(1, is);
+                        statement2.executeUpdate();
                     }
 
                 }
 
             }
-        } catch (SQLException e) {
+        } catch (SQLException | IOException e) {
             e.printStackTrace();
             logger.error("DaoReadException");
             throw new DaoWriteException("write", e);
