@@ -10,4 +10,8 @@ class SudokuBoardDaoFactoryTest {
     void getFileDao() {
         assertNotNull(SudokuBoardDaoFactory.getFileDao("fileName"));
     }
+    @Test
+    void getJdbcDao() {
+        assertNotNull(SudokuBoardDaoFactory.getJdbcDao("fileName"));
+    }
 }
