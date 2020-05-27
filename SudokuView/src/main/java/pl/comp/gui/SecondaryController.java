@@ -124,6 +124,18 @@ public class SecondaryController implements Initializable {
 
     }
 
+    public void saveSudokuBoardToDatabase() throws DaoWriteException, ClassNotFoundException {
+        String file = "Nazwa";
+        if (file != null) {
+
+            Dao<SudokuBoard> sudokuBoardDao = SudokuBoardDaoFactory.getJdbcDao(file);
+            sudokuBoardDao.write(sudoku);
+        }
+
+    }
+
+
+
 
     public SudokuBoard getSudokuBoard() {
         return sudoku;

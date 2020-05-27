@@ -24,6 +24,7 @@
       </ComboBox>
       <Button fx:id="primaryButton" onAction="#switchToSecondary" text="%begin" />
       <Button mnemonicParsing="false" onAction="#loadSudokuBoard" prefHeight="25.0" prefWidth="109.0" text="%load" />
+      <Button mnemonicParsing="false"  onAction="#loadSudokuBoardFromDatabase" text="%load_db" />
 
    </children>
    <padding>

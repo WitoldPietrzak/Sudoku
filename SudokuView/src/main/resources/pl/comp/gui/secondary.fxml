@@ -11,7 +11,6 @@
       <ButtonBar prefHeight="40.0" prefWidth="200.0">
         <buttons>
             <Button mnemonicParsing="false" onAction="#switchToPrimary" text="%return" />
-              <Button fx:id="secondaryButton" onAction="#saveSudokuBoard" text="%save" />
           <Button mnemonicParsing="false" onAction="#checkSudoku" text="%check" />
         </buttons>
       </ButtonBar>
@@ -39,6 +38,12 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
         </GridPane>
+      <ButtonBar layoutX="193.0" layoutY="286.0" prefHeight="40.0" prefWidth="200.0">
+         <buttons>
+            <Button fx:id="secondaryButton1" onAction="#saveSudokuBoard" text="%save" />
+            <Button mnemonicParsing="false" onAction="#saveSudokuBoardToDatabase" text="%save_db" />
+         </buttons>
+      </ButtonBar>
     </children>
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
