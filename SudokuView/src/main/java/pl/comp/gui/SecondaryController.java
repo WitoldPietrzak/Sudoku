@@ -10,6 +10,7 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.adapter.JavaBeanIntegerPropertyBuilder;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Cursor;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -30,6 +31,24 @@ public class SecondaryController implements Initializable {
 
     @FXML
     private GridPane grid;
+    @FXML
+    private GridPane grid11;
+    @FXML
+    private GridPane grid12;
+    @FXML
+    private GridPane grid13;
+    @FXML
+    private GridPane grid21;
+    @FXML
+    private GridPane grid22;
+    @FXML
+    private GridPane grid23;
+    @FXML
+    private GridPane grid31;
+    @FXML
+    private GridPane grid32;
+    @FXML
+    private GridPane grid33;
     @FXML
     private Label msglabel;
 
@@ -74,9 +93,13 @@ public class SecondaryController implements Initializable {
                         return c;
                     }));
 
+                    textFields.get(i * 9 + j).setMaxSize(50,50);
+                    textFields.get(i * 9 + j).setPrefSize(50,50);
+                    textFields.get(i * 9 + j).setMinSize(50,50);
                     textFields.get(i * 9 + j).textProperty().bindBidirectional(
                             integerProperties.get(i * 9 + j), new ModifiedNumberStringConverter());
                     textFields.get(i * 9 + j).setId("field" + i + j);
+
                     if (textFields.get(i * 9 + j).textProperty().get().matches("[1-9]")) {
                         textFields.get(i * 9 + j).setEditable(false);
                         textFields.get(i * 9 + j).setCursor(Cursor.DEFAULT);
@@ -84,13 +107,49 @@ public class SecondaryController implements Initializable {
                                 + " -fx-background-color: rgb(180,180,180);");
                     }
 
-
-                    grid.add(textFields.get(i * 9 + j), j, i);
+                    if(i/3==0 ){
+                        if(j/3==0){
+                            grid11.add(textFields.get(i * 9 + j), j, i);
+                        }
+                        if(j/3==1){
+                            grid12.add(textFields.get(i * 9 + j), j-3, i);
+                        }
+                        if(j/3==2){
+                            grid13.add(textFields.get(i * 9 + j), j-6, i);
+                        }
+                    }
+                    if(i/3==1 ){
+                        if(j/3==0){
+                            grid21.add(textFields.get(i * 9 + j), j, i-3);
+                        }
+                        if(j/3==1){
+                            grid22.add(textFields.get(i * 9 + j), j-3, i-3);
+                        }
+                        if(j/3==2){
+                            grid23.add(textFields.get(i * 9 + j), j-6, i-3);
+                        }
+                    }
+                    if(i/3==2 ){
+                        if(j/3==0){
+                            grid31.add(textFields.get(i * 9 + j), j, i-6);
+                        }
+                        if(j/3==1){
+                            grid32.add(textFields.get(i * 9 + j), j-3, i-6);
+                        }
+                        if(j/3==2){
+                            grid33.add(textFields.get(i * 9 + j), j-6, i-6);
+                        }
+                    }
+                    //grid.add(textFields.get(i * 9 + j), j, i);
                 } catch (NoSuchMethodException e) {
                     e.printStackTrace();
                 }
             }
         }
+
+
+        grid.setHgap(3); //horizontal gap in pixels => that's what you are asking for
+        grid.setVgap(3); //vertical gap in pixels
     }
 
 
