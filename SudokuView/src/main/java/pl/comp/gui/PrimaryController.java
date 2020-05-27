@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
+
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
@@ -17,7 +18,6 @@ import pl.comp.dao.SudokuBoardDaoFactory;
 import pl.comp.dao.exceptions.DaoReadException;
 import sudoku.DifficultyLevel;
 import sudoku.SudokuBoard;
-
 
 
 public class PrimaryController implements Initializable {
@@ -77,6 +77,19 @@ public class PrimaryController implements Initializable {
 
         }
     }
+
+    public void loadSudokuBoardFromDatabase() throws IOException, DaoReadException, ClassNotFoundException {
+        String file = "Nazwa";
+        if (file != null) {
+            Dao<SudokuBoard> sudokuBoardDao;
+            sudokuBoardDao = SudokuBoardDaoFactory.getJdbcDao(file);
+            SudokuBoard su = sudokuBoardDao.read();
+            new SecondaryController().setSudokuBoard(su);
+            App.setRoot("secondary");
+
+        }
+    }
+
 
     public void changeLanguage() throws IOException {
         if (App.getLanguage().matches("pl")) {
