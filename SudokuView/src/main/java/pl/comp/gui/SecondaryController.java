@@ -148,8 +148,8 @@ public class SecondaryController implements Initializable {
         }
 
 
-        grid.setHgap(3); //horizontal gap in pixels => that's what you are asking for
-        grid.setVgap(3); //vertical gap in pixels
+        grid.setHgap(3);
+        grid.setVgap(3);
     }
 
 
@@ -157,6 +157,15 @@ public class SecondaryController implements Initializable {
         if (!sudoku.checkIfSolved()) {
             msglabel.textProperty().setValue(App.getResourceBundle().getString("message1"));
             msglabel.setStyle("-fx-background-color: yellow;");
+            for(int i=0;i<sudoku.getSudokuSize();i++){
+                for(int j=0;j<sudoku.getSudokuSize();j++){
+                    if (sudoku.get(i,j)==0){
+                        String fieldid="#field"+i+j;
+                        TextField textField= (TextField) grid.getScene().lookup(fieldid);
+                        textField.setStyle("-fx-background-color: #ffff00;");
+                    }
+                }
+            }
 
         } else if (!sudoku.checkBoard()) {
             msglabel.textProperty().setValue(App.getResourceBundle().getString("message2"));
