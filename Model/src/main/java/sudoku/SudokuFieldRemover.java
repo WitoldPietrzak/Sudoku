@@ -41,6 +41,7 @@ public class SudokuFieldRemover {
         }
     }
 
+
     private int possibleSolutionsCounter(SudokuBoard sudoku) throws CloneNotSupportedException {
         boolean flag = false;
         int solutions = 0;

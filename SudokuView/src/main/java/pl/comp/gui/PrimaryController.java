@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
+
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
@@ -15,17 +16,15 @@ import javafx.stage.FileChooser;
 import pl.comp.dao.Dao;
 import pl.comp.dao.SudokuBoardDaoFactory;
 import pl.comp.dao.exceptions.DaoReadException;
+import sudoku.BacktrackingSudokuSolver;
 import sudoku.DifficultyLevel;
 import sudoku.SudokuBoard;
-
 
 
 public class PrimaryController implements Initializable {
 
     private static Property<DifficultyLevel> difficultyLevel =
             new SimpleObjectProperty<>(DifficultyLevel.Easy);
-
-    private ResourceBundle resourceBundle;
 
 
     public void setDifficultyLevel(DifficultyLevel difficultyLevel) {
@@ -48,14 +47,15 @@ public class PrimaryController implements Initializable {
 
     @FXML
     private void switchToSecondary() throws IOException {
+        SudokuBoard su = new SudokuBoard(new BacktrackingSudokuSolver());
+        new SecondaryController().setSudokuBoard(su);
         App.setRoot("secondary");
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Locale.setDefault(LocaleController.getLocale());
         ResourceBundle authors = ResourceBundle.getBundle("pl.comp.gui.authors.authors",
-                LocaleController.getLocale());
+                new Locale(App.getLanguage()));
         labelCreatedBy.textProperty().setValue(authors.getString("createdBy"));
         labelAuthor1.textProperty().setValue(authors.getString("author1"));
         labelAuthor2.textProperty().setValue(authors.getString("author2"));
@@ -64,7 +64,7 @@ public class PrimaryController implements Initializable {
 
     }
 
-    public void loadSudokuBoard() throws IOException, DaoReadException {
+    public void loadSudokuBoard() throws IOException, DaoReadException, ClassNotFoundException {
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
                 "TXT files (*.txt)", "*.txt");
@@ -81,15 +81,26 @@ public class PrimaryController implements Initializable {
         }
     }
 
-    public void changeLanguage() throws IOException {
-        if (LocaleController.getLocale().toString().equals("pl")) {
-            LocaleController.setLocale(new Locale("en"));
-            Locale.setDefault(LocaleController.getLocale());
-        } else {
-            LocaleController.setLocale(new Locale("pl"));
-            Locale.setDefault(LocaleController.getLocale());
+    public void loadSudokuBoardFromDatabase() throws IOException, DaoReadException, ClassNotFoundException {
+        String file = "Nazwa";
+        if (file != null) {
+            Dao<SudokuBoard> sudokuBoardDao;
+            sudokuBoardDao = SudokuBoardDaoFactory.getJdbcDao(file);
+            SudokuBoard su = sudokuBoardDao.read();
+            new SecondaryController().setSudokuBoard(su);
+            App.setRoot("secondary");
+
         }
-        resourceBundle = ResourceBundle.getBundle("Lang", LocaleController.getLocale());
+    }
+
+
+    public void changeLanguage() throws IOException {
+        if (App.getLanguage().matches("pl")) {
+            App.setLanguage("en");
+        } else {
+            App.setLanguage("pl");
+        }
+        difficultyLevel.getValue().setLang(App.getLanguage());
         App.setRoot("primary");
     }
 
