@@ -2,12 +2,13 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
 <VBox alignment="CENTER" prefHeight="800.0" prefWidth="800.0" spacing="20.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.comp.gui.PrimaryController">
    <children>
-      <Button alignment="CENTER" mnemonicParsing="false" onAction="#changeLanguage" prefHeight="38.0" prefWidth="66.0" text="%language" textAlignment="CENTER" translateX="-350.0" translateY="-140.0" />
+      <Button alignment="CENTER" mnemonicParsing="false" onAction="#changeLanguage" prefHeight="38.0" prefWidth="66.0" text="%language" textAlignment="CENTER" translateX="-350.0" translateY="-110.0" />
       <Label fx:id="labelCreatedBy" text="Label" translateY="-110.0" />
       <Label fx:id="labelAuthor1" text="Label" translateX="-60.0" translateY="-110.0" />
       <Label fx:id="labelAuthor2" text="Label" translateX="60.0" translateY="-147.0" />
@@ -23,7 +24,16 @@
       <ComboBox fx:id="comboBox" prefWidth="150.0">
       </ComboBox>
       <Button fx:id="primaryButton" onAction="#switchToSecondary" text="%begin" />
-      <Button mnemonicParsing="false" onAction="#loadSudokuBoard" prefHeight="25.0" prefWidth="109.0" text="%load" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%load" />
+      <ButtonBar maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="287.0">
+        <buttons>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#loadSudokuBoardFromDatabase" prefHeight="25.0" prefWidth="167.0" text="%load_db" textAlignment="CENTER" />
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#loadSudokuBoard" prefHeight="25.0" prefWidth="109.0" text="%load_file" textAlignment="CENTER" />
+        </buttons>
+         <effect>
+            <Blend />
+         </effect>
+      </ButtonBar>
 
    </children>
    <padding>
