@@ -42,9 +42,11 @@ public class SecondaryController implements Initializable {
 
     }
 
+    private ResourceBundle resourceBundle;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        this.resourceBundle = ResourceBundle.getBundle("Lang", LocaleController.getLocale());
         if (sudoku.checkIfEmpty()) {
             sudoku.solveGame();
             SudokuFieldRemover remover = new SudokuFieldRemover();
@@ -52,7 +54,7 @@ public class SecondaryController implements Initializable {
             try {
                 remover.remove(sudoku, new PrimaryController().getDifficultyLevel());
             } catch (CloneNotSupportedException e) {
-                e.printStackTrace();
+//                e.printStackTrace();
             }
         }
         List<TextField> textFields = Arrays.asList(new TextField[81]);
@@ -87,7 +89,7 @@ public class SecondaryController implements Initializable {
 
                     grid.add(textFields.get(i * 9 + j), j, i);
                 } catch (NoSuchMethodException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                 }
             }
         }
@@ -96,14 +98,14 @@ public class SecondaryController implements Initializable {
 
     public void checkSudoku() {
         if (!sudoku.checkIfSolved()) {
-            msglabel.textProperty().setValue(App.getResourceBundle().getString("message1"));
+            msglabel.textProperty().setValue(resourceBundle.getString("message1"));
             msglabel.setStyle("-fx-background-color: yellow;");
 
         } else if (!sudoku.checkBoard()) {
-            msglabel.textProperty().setValue(App.getResourceBundle().getString("message2"));
+            msglabel.textProperty().setValue(resourceBundle.getString("message2"));
             msglabel.setStyle("-fx-background-color: red;");
         } else {
-            msglabel.textProperty().setValue(App.getResourceBundle().getString("message3"));
+            msglabel.textProperty().setValue(resourceBundle.getString("message3"));
             msglabel.setStyle("-fx-background-color: green;");
         }
     }
