@@ -25,6 +25,8 @@ public class PrimaryController implements Initializable {
     private static Property<DifficultyLevel> difficultyLevel =
             new SimpleObjectProperty<>(DifficultyLevel.Easy);
 
+    private ResourceBundle resourceBundle;
+
 
     public void setDifficultyLevel(DifficultyLevel difficultyLevel) {
         PrimaryController.difficultyLevel.setValue(difficultyLevel);
@@ -51,8 +53,9 @@ public class PrimaryController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        Locale.setDefault(LocaleController.getLocale());
         ResourceBundle authors = ResourceBundle.getBundle("pl.comp.gui.authors.authors",
-                new Locale(App.getLanguage()));
+                LocaleController.getLocale());
         labelCreatedBy.textProperty().setValue(authors.getString("createdBy"));
         labelAuthor1.textProperty().setValue(authors.getString("author1"));
         labelAuthor2.textProperty().setValue(authors.getString("author2"));
@@ -79,11 +82,14 @@ public class PrimaryController implements Initializable {
     }
 
     public void changeLanguage() throws IOException {
-        if (App.getLanguage().matches("pl")) {
-            App.setLanguage("en");
+        if (LocaleController.getLocale().toString().equals("pl")) {
+            LocaleController.setLocale(new Locale("en"));
+            Locale.setDefault(LocaleController.getLocale());
         } else {
-            App.setLanguage("pl");
+            LocaleController.setLocale(new Locale("pl"));
+            Locale.setDefault(LocaleController.getLocale());
         }
+        resourceBundle = ResourceBundle.getBundle("Lang", LocaleController.getLocale());
         App.setRoot("primary");
     }
 

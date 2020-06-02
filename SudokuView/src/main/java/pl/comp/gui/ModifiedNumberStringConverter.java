@@ -15,7 +15,7 @@ class ModifiedNumberStringConverter extends NumberStringConverter {
         try {
             return converter.fromString(value);
         } catch (NumberFormatException e) {
-            e.getStackTrace();
+//            e.getStackTrace();
         }
         return -1.0;
 
@@ -31,7 +31,7 @@ class ModifiedNumberStringConverter extends NumberStringConverter {
             }
             return converter.toString(value);
         } catch (NumberFormatException e) {
-            e.getStackTrace();
+//            e.getStackTrace();
         }
 
         return null;
