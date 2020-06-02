@@ -8,7 +8,7 @@ public enum DifficultyLevel {
 
 
     private int fieldsToRemove;
-    private String lang = "pl";
+    private String lang = Locale.getDefault().toString();
 
     static {
         Easy.fieldsToRemove = 49;
@@ -25,8 +25,8 @@ public enum DifficultyLevel {
     }
 
     public String getLocaleText() {
-        Locale locale = new Locale(lang);
-        ResourceBundle resourceBundle = ResourceBundle.getBundle("Lang", locale);
+//        Locale locale = new Locale(lang);
+        ResourceBundle resourceBundle = ResourceBundle.getBundle("Lang", Locale.getDefault());
         return resourceBundle.getString(this.name());
     }
 
