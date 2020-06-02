@@ -1,7 +1,16 @@
 package pl.comp.dao;
 
-import java.io.*;
-import java.sql.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pl.comp.dao.exceptions.DaoReadException;
@@ -60,9 +69,11 @@ public class JdbcSudokuBoardDao implements Dao<SudokuBoard>, AutoCloseable {
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (!resultSet.next()) {
                     try (PreparedStatement statement2 =
-                                 connection.prepareStatement("INSERT INTO sudokus(id,sudokuData) VALUES(?,?)");
+                                 connection.prepareStatement(
+                                         "INSERT INTO sudokus(id,sudokuData) VALUES(?,?)");
                          ByteArrayOutputStream baos =
-                                 new ByteArrayOutputStream(); ObjectOutputStream oos = new ObjectOutputStream(baos)) {
+                                 new ByteArrayOutputStream();
+                         ObjectOutputStream oos = new ObjectOutputStream(baos)) {
                         oos.writeObject(obj);
                         InputStream is = new ByteArrayInputStream(baos.toByteArray());
                         statement2.setString(1, fileName);
@@ -71,7 +82,8 @@ public class JdbcSudokuBoardDao implements Dao<SudokuBoard>, AutoCloseable {
                     }
                 } else {
                     try (PreparedStatement statement2 =
-                                 connection.prepareStatement("UPDATE sudokus SET sudokuData = ? WHERE id = ? ");
+                                 connection.prepareStatement(
+                                         "UPDATE sudokus SET sudokuData = ? WHERE id = ? ");
                          ByteArrayOutputStream baos = new ByteArrayOutputStream();
                          ObjectOutputStream oos = new ObjectOutputStream(baos)) {
                         oos.writeObject(obj);
