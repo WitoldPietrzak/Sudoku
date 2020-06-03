@@ -10,17 +10,17 @@ import sudoku.SudokuBoard;
 
 class JdbcSudokuBoardDaoTest {
 
-//    @Test
-//    void read() {
-//    }
-//
-//    @Test
-//    void write() throws DaoWriteException, ClassNotFoundException, DaoReadException {
-//        JdbcSudokuBoardDao jdbcSudokuBoardDao = new JdbcSudokuBoardDao("plik");
-//        SudokuBoard sudokuBoard = new SudokuBoard(new BacktrackingSudokuSolver());
-//        sudokuBoard.solveGame();
-//        jdbcSudokuBoardDao.write(sudokuBoard);
-//        SudokuBoard sudokuBoard1 = jdbcSudokuBoardDao.read();
-//        assertEquals(sudokuBoard, sudokuBoard1);
-//    }
+    @Test
+    void read() {
+    }
+
+    @Test
+    void write() throws DaoWriteException, ClassNotFoundException, DaoReadException {
+        JdbcSudokuBoardDao jdbcSudokuBoardDao = new JdbcSudokuBoardDao("plik");
+        SudokuBoard sudokuBoard = new SudokuBoard(new BacktrackingSudokuSolver());
+        sudokuBoard.solveGame();
+        jdbcSudokuBoardDao.write(sudokuBoard);
+        SudokuBoard sudokuBoard1 = jdbcSudokuBoardDao.read();
+        assertEquals(sudokuBoard, sudokuBoard1);
+    }
 }

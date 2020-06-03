@@ -73,12 +73,11 @@ public class SudokuBoard implements Serializable, Cloneable {
         try {
             board.get(rowNumber * SUDOKU_SIZE + columnNumber).setValue(value);
         } catch (SudokuFieldException e) {
-            e.printStackTrace();
+            logger.error("Wrong Field Value", e);
         }
     }
 
     public SudokuBoard(SudokuSolver solver) {
-        logger.info("SudokuBoard constructed.");
         this.solver = solver;
         for (int i = 0; i < this.board.size(); i++) {
             this.board.set(i, new SudokuField());

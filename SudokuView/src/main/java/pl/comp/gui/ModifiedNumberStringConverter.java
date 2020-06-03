@@ -2,10 +2,13 @@ package pl.comp.gui;
 
 import java.util.Locale;
 import javafx.util.converter.NumberStringConverter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 class ModifiedNumberStringConverter extends NumberStringConverter {
     private final Locale local = Locale.getDefault(Locale.Category.FORMAT);
     private final NumberStringConverter converter = new NumberStringConverter(local);
+    private static final Logger logger = LoggerFactory.getLogger(ModifiedNumberStringConverter.class);
 
     @Override
     public Number fromString(String value) {
@@ -15,7 +18,7 @@ class ModifiedNumberStringConverter extends NumberStringConverter {
         try {
             return converter.fromString(value);
         } catch (NumberFormatException e) {
-//            e.getStackTrace();
+           logger.error("NumberFormatException");
         }
         return -1.0;
 
@@ -31,7 +34,7 @@ class ModifiedNumberStringConverter extends NumberStringConverter {
             }
             return converter.toString(value);
         } catch (NumberFormatException e) {
-//            e.getStackTrace();
+            logger.error("NumberFormatException");
         }
 
         return null;

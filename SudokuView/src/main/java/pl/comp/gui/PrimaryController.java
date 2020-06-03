@@ -13,6 +13,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.stage.FileChooser;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pl.comp.dao.Dao;
 import pl.comp.dao.SudokuBoardDaoFactory;
 import pl.comp.dao.exceptions.DaoReadException;
@@ -25,6 +27,7 @@ public class PrimaryController implements Initializable {
 
     private static Property<DifficultyLevel> difficultyLevel =
             new SimpleObjectProperty<>(DifficultyLevel.Easy);
+    private static final Logger logger = LoggerFactory.getLogger(PrimaryController.class);
 
 
     public void setDifficultyLevel(DifficultyLevel difficultyLevel) {
@@ -73,11 +76,16 @@ public class PrimaryController implements Initializable {
         File file = fileChooser.showOpenDialog(comboBox.getScene().getWindow());
 
         if (file != null) {
-            Dao<SudokuBoard> sudokuBoardDao;
-            sudokuBoardDao = SudokuBoardDaoFactory.getFileDao(file.getAbsolutePath());
-            SudokuBoard su = sudokuBoardDao.read();
-            new SecondaryController().setSudokuBoard(su);
-            App.setRoot("secondary");
+            try {
+                Dao<SudokuBoard> sudokuBoardDao;
+                sudokuBoardDao = SudokuBoardDaoFactory.getFileDao(file.getAbsolutePath());
+                SudokuBoard su = sudokuBoardDao.read();
+                new SecondaryController().setSudokuBoard(su);
+                App.setRoot("secondary");
+            }catch(DaoReadException e) {
+                logger.error(e.getLocalizedMessage());
+            }
+
 
         }
     }
@@ -89,6 +97,7 @@ public class PrimaryController implements Initializable {
             sudokuBoardDao = SudokuBoardDaoFactory.getJdbcDao(file);
             SudokuBoard su = sudokuBoardDao.read();
             new SecondaryController().setSudokuBoard(su);
+
             App.setRoot("secondary");
 
         }
