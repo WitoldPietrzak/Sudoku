@@ -22,16 +22,10 @@ public class JdbcSudokuBoardDao implements Dao<SudokuBoard>, AutoCloseable {
 
     private String fileName;
     private String databaseUrl = "jdbc:derby://localhost:1527/dbname";
-    private static final Logger logger = LoggerFactory.getLogger(JdbcSudokuBoardDao.class);
+    //    private static final Logger logger = LoggerFactory.getLogger(JdbcSudokuBoardDao.class);
 
     public JdbcSudokuBoardDao(String filename) {
         this.fileName = filename;
-    }
-
-
-    @Override
-    public void close() throws Exception {
-
     }
 
     @Override
@@ -51,16 +45,15 @@ public class JdbcSudokuBoardDao implements Dao<SudokuBoard>, AutoCloseable {
                     sudokuBoard = (SudokuBoard) ois.readObject();
                 }
             }
+
         } catch (SQLException | IOException e) {
-            e.printStackTrace();
-            logger.error("DaoReadException");
             throw new DaoReadException("read");
         }
         return sudokuBoard;
     }
 
     @Override
-    public void write(SudokuBoard obj) throws DaoWriteException, ClassNotFoundException {
+    public void write(SudokuBoard obj) throws ClassNotFoundException, DaoWriteException {
         //Class.forName("org.apache.derby.jdbc.ClientDriver");
         try (Connection connection = DriverManager.getConnection(databaseUrl);
              PreparedStatement statement =
@@ -97,9 +90,12 @@ public class JdbcSudokuBoardDao implements Dao<SudokuBoard>, AutoCloseable {
 
             }
         } catch (SQLException | IOException e) {
-            e.printStackTrace();
-            logger.error("DaoReadException");
-            throw new DaoWriteException("write", e);
+            throw new DaoWriteException("write");
         }
+    }
+
+    @Override
+    public void close() {
+
     }
 }

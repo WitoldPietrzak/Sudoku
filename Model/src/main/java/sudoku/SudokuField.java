@@ -31,7 +31,6 @@ public class SudokuField implements Serializable, Cloneable, Comparable<SudokuFi
             logger.warn("Wrong field value!");
             throw new SudokuFieldException("_value");
         }
-        //        logger.info("Set field logger");
         this.value = value;
     }
 

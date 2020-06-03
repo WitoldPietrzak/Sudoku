@@ -24,7 +24,7 @@ class FileSudokuBoardDaoTest {
     }
 
     @Test
-    void readFileExceptionTest() throws DaoReadException {
+    void readFileExceptionTest() {
         sudokuBoardDao = SudokuBoardDaoFactory.getFileDao("test1.txt");
         assertThrows(DaoReadException.class, () -> sudokuBoardDao.read());
 

@@ -17,6 +17,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pl.comp.dao.Dao;
 import pl.comp.dao.SudokuBoardDaoFactory;
 import pl.comp.dao.exceptions.DaoWriteException;
@@ -53,6 +55,7 @@ public class SecondaryController implements Initializable {
     private Label msglabel;
 
     private static SudokuBoard sudoku = new SudokuBoard(new BacktrackingSudokuSolver());
+    private static final Logger logger = LoggerFactory.getLogger(SecondaryController.class);
 
     @FXML
     private void switchToPrimary() throws IOException {
@@ -178,7 +181,7 @@ public class SecondaryController implements Initializable {
         }
     }
 
-    public void saveSudokuBoard() throws DaoWriteException, ClassNotFoundException {
+    public void saveSudokuBoard() throws ClassNotFoundException, DaoWriteException {
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)",
                 "*.txt");
@@ -194,10 +197,9 @@ public class SecondaryController implements Initializable {
 
     }
 
-    public void saveSudokuBoardToDatabase() throws DaoWriteException, ClassNotFoundException {
+    public void saveSudokuBoardToDatabase() throws ClassNotFoundException, DaoWriteException {
         String file = "Nazwa";
         if (file != null) {
-
             Dao<SudokuBoard> sudokuBoardDao = SudokuBoardDaoFactory.getJdbcDao(file);
             sudokuBoardDao.write(sudoku);
         }
