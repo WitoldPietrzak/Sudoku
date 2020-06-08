@@ -7,6 +7,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.beans.property.adapter.JavaBeanIntegerPropertyBuilder;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -53,6 +55,8 @@ public class SecondaryController implements Initializable {
     private GridPane grid33;
     @FXML
     private Label msglabel;
+    @FXML
+    public TextField db_filename2;
 
     private static SudokuBoard sudoku = new SudokuBoard(new BacktrackingSudokuSolver());
     private static final Logger logger = LoggerFactory.getLogger(SecondaryController.class);
@@ -65,10 +69,12 @@ public class SecondaryController implements Initializable {
     }
 
     private ResourceBundle resourceBundle;
+    StringProperty stringProperty = new SimpleStringProperty();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.resourceBundle = ResourceBundle.getBundle("Lang", LocaleController.getLocale());
+        db_filename2.textProperty().bindBidirectional(stringProperty);
         if (sudoku.checkIfEmpty()) {
             sudoku.solveGame();
             SudokuFieldRemover remover = new SudokuFieldRemover();
@@ -198,9 +204,8 @@ public class SecondaryController implements Initializable {
     }
 
     public void saveSudokuBoardToDatabase() throws ClassNotFoundException, DaoWriteException {
-        String file = "Nazwa";
-        if (file != null) {
-            Dao<SudokuBoard> sudokuBoardDao = SudokuBoardDaoFactory.getJdbcDao(file);
+        if (stringProperty.getValue() != null) {
+            Dao<SudokuBoard> sudokuBoardDao = SudokuBoardDaoFactory.getJdbcDao(stringProperty.getValue());
             sudokuBoardDao.write(sudoku);
         }
 
