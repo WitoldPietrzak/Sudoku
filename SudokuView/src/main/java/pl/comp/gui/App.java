@@ -17,24 +17,6 @@ import org.slf4j.LoggerFactory;
 public class App extends Application {
 
     private static Scene scene;
-//    private static String language = "pl";
-//    private static ResourceBundle resourceBundle;
-
-//    public static void setLanguage(String language) {
-//        App.language = language;
-//    }
-//
-//    public static String getLanguage() {
-//        return language;
-//    }
-
-//    public static ResourceBundle getResourceBundle() {
-//        return resourceBundle;
-//    }
-
-//    public static void setResourceBundle(ResourceBundle resourceBundle) {
-//
-//    }
 
     private static final Logger logger = LoggerFactory.getLogger(App.class);
 

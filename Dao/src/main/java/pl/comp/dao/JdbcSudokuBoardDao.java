@@ -11,8 +11,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import pl.comp.dao.exceptions.DaoReadException;
 import pl.comp.dao.exceptions.DaoWriteException;
 import sudoku.SudokuBoard;
@@ -22,15 +20,13 @@ public class JdbcSudokuBoardDao implements Dao<SudokuBoard>, AutoCloseable {
 
     private String fileName;
     private String databaseUrl = "jdbc:derby://localhost:1527/dbname";
-    //    private static final Logger logger = LoggerFactory.getLogger(JdbcSudokuBoardDao.class);
 
     public JdbcSudokuBoardDao(String filename) {
         this.fileName = filename;
     }
 
     @Override
-    public SudokuBoard read() throws DaoReadException, ClassNotFoundException {
-        //Class.forName("org.apache.derby.jdbc.ClientDriver");
+    public SudokuBoard read() throws DaoReadException {
         SudokuBoard sudokuBoard = null;
         try (Connection connection = DriverManager.getConnection(databaseUrl);
              PreparedStatement statement =
@@ -46,15 +42,14 @@ public class JdbcSudokuBoardDao implements Dao<SudokuBoard>, AutoCloseable {
                 }
             }
 
-        } catch (SQLException | IOException e) {
+        } catch (SQLException | IOException | ClassNotFoundException e) {
             throw new DaoReadException("read");
         }
         return sudokuBoard;
     }
 
     @Override
-    public void write(SudokuBoard obj) throws ClassNotFoundException, DaoWriteException {
-        //Class.forName("org.apache.derby.jdbc.ClientDriver");
+    public void write(SudokuBoard obj) throws DaoWriteException {
         try (Connection connection = DriverManager.getConnection(databaseUrl);
              PreparedStatement statement =
                      connection.prepareStatement("SELECT sudokuData from sudokus WHERE id = ?")) {

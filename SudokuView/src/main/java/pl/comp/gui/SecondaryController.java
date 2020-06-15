@@ -10,7 +10,6 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.adapter.JavaBeanIntegerPropertyBuilder;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.Cursor;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -76,7 +75,7 @@ public class SecondaryController implements Initializable {
             try {
                 remover.remove(sudoku, new PrimaryController().getDifficultyLevel());
             } catch (CloneNotSupportedException e) {
-//                e.printStackTrace();
+                logger.error(e.getLocalizedMessage());
             }
         }
         List<TextField> textFields = Arrays.asList(new TextField[81]);
@@ -145,9 +144,9 @@ public class SecondaryController implements Initializable {
                             grid33.add(textFields.get(i * 9 + j), j-6, i-6);
                         }
                     }
-                    //grid.add(textFields.get(i * 9 + j), j, i);
+
                 } catch (NoSuchMethodException e) {
-//                    e.printStackTrace();
+                    logger.error(e.getLocalizedMessage());
                 }
             }
         }
@@ -181,27 +180,35 @@ public class SecondaryController implements Initializable {
         }
     }
 
-    public void saveSudokuBoard() throws ClassNotFoundException, DaoWriteException {
-        FileChooser fileChooser = new FileChooser();
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)",
-                "*.txt");
-        fileChooser.getExtensionFilters().add(extFilter);
-        File file = fileChooser.showSaveDialog(grid.getScene().getWindow());
+    public void saveSudokuBoard() {
+        try {
+            FileChooser fileChooser = new FileChooser();
+            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)",
+                    "*.txt");
+            fileChooser.getExtensionFilters().add(extFilter);
+            File file = fileChooser.showSaveDialog(grid.getScene().getWindow());
 
-        if (file != null) {
+            if (file != null) {
 
-            Dao<SudokuBoard> sudokuBoardDao = SudokuBoardDaoFactory.getFileDao(
-                    file.getAbsolutePath());
-            sudokuBoardDao.write(sudoku);
+                Dao<SudokuBoard> sudokuBoardDao = SudokuBoardDaoFactory.getFileDao(
+                        file.getAbsolutePath());
+                sudokuBoardDao.write(sudoku);
+            }
+        }catch (DaoWriteException e) {
+            logger.error(e.getLocalizedMessage());
         }
 
     }
 
-    public void saveSudokuBoardToDatabase() throws ClassNotFoundException, DaoWriteException {
-        String file = "Nazwa";
-        if (file != null) {
-            Dao<SudokuBoard> sudokuBoardDao = SudokuBoardDaoFactory.getJdbcDao(file);
-            sudokuBoardDao.write(sudoku);
+    public void saveSudokuBoardToDatabase() {
+        try {
+            String file = "Nazwa";
+            if (file != null) {
+                Dao<SudokuBoard> sudokuBoardDao = SudokuBoardDaoFactory.getJdbcDao(file);
+                sudokuBoardDao.write(sudoku);
+            }
+        }catch (DaoWriteException e) {
+            logger.error(e.getLocalizedMessage());
         }
 
     }

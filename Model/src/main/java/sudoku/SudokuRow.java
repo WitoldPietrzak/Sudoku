@@ -13,7 +13,7 @@ public class SudokuRow extends SudokuFieldCollection implements Cloneable, Seria
         super(fields);
     }
 
-    public SudokuRow clone() throws CloneNotSupportedException {
+    public SudokuRow clone() {
         try (ByteArrayOutputStream bos = new ByteArrayOutputStream()) {
             try (ObjectOutputStream oos = new ObjectOutputStream(bos)) {
                 oos.writeObject(this);

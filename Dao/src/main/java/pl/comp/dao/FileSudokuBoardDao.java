@@ -5,8 +5,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import pl.comp.dao.exceptions.DaoReadException;
 import pl.comp.dao.exceptions.DaoWriteException;
 import sudoku.SudokuBoard;
@@ -15,7 +13,6 @@ import sudoku.SudokuBoard;
 
 public class FileSudokuBoardDao implements Dao<SudokuBoard>, AutoCloseable {
     private String fileName;
-    private static final Logger logger = LoggerFactory.getLogger(FileSudokuBoardDao.class);
 
     public FileSudokuBoardDao(String filename) {
         this.fileName = filename;

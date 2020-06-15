@@ -13,24 +13,7 @@ public class SudokuColumn extends SudokuFieldCollection implements Cloneable, Se
         super(fields);
     }
 
-    //    public SudokuColumn clone() {
-    //        SudokuColumn object = null;
-    //        try (ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
-    //             ObjectOutputStream objOut = new ObjectOutputStream(byteOut);
-    //             ByteArrayInputStream byteIn = new ByteArrayInputStream(byteOut.toByteArray());
-    //             ObjectInputStream objIn = new ObjectInputStream(byteIn)) {
-    //            objOut.writeObject(this);
-    //            object = (SudokuColumn) objIn.readObject();
-    //        } catch (IOException | ClassNotFoundException e) {
-    //            try {
-    //                throw new SudokuCloneException("clone error");
-    //            } catch (SudokuCloneException ex) {
-    //                ex.printStackTrace();
-    //            }
-    //        }
-    //        return object;
-    //    }
-    public SudokuColumn clone() throws CloneNotSupportedException {
+    public SudokuColumn clone() {
         try (ByteArrayOutputStream bos = new ByteArrayOutputStream()) {
             try (ObjectOutputStream oos = new ObjectOutputStream(bos)) {
                 oos.writeObject(this);
