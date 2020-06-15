@@ -8,10 +8,14 @@ import java.util.ResourceBundle;
 
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,16 +53,18 @@ public class PrimaryController implements Initializable {
     public Label labelAuthor2;
 
     @FXML
+    public TextField db_filename1;
+    @FXML
     private void switchToSecondary() {
         try {
             SudokuBoard su = new SudokuBoard(new BacktrackingSudokuSolver());
             new SecondaryController().setSudokuBoard(su);
             App.setRoot("secondary");
-        }catch(IOException e) {
+        }catch (IOException e) {
             logger.error(e.getLocalizedMessage());
         }
-
     }
+    StringProperty stringProperty = new SimpleStringProperty();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -70,6 +76,7 @@ public class PrimaryController implements Initializable {
         labelAuthor2.textProperty().setValue(authors.getString("author2"));
         comboBox.getItems().setAll(DifficultyLevel.values());
         comboBox.valueProperty().bindBidirectional(difficultyLevel);
+        db_filename1.textProperty().bindBidirectional(stringProperty);
 
     }
 
@@ -97,10 +104,9 @@ public class PrimaryController implements Initializable {
 
     public void loadSudokuBoardFromDatabase() {
         try {
-            String file = "Nazwa";
-            if (file != null) {
+            if (stringProperty.getValue() != null) {
                 Dao<SudokuBoard> sudokuBoardDao;
-                sudokuBoardDao = SudokuBoardDaoFactory.getJdbcDao(file);
+                sudokuBoardDao = SudokuBoardDaoFactory.getJdbcDao(stringProperty.getValue());
                 SudokuBoard su = sudokuBoardDao.read();
                 new SecondaryController().setSudokuBoard(su);
 
@@ -125,7 +131,7 @@ public class PrimaryController implements Initializable {
         difficultyLevel.getValue().setLang(LocaleController.getLocale().toString());
         try {
             App.setRoot("primary");
-        }catch(IOException e) {
+        }catch (IOException e) {
             logger.error(e.getLocalizedMessage());
         }
     }
