@@ -7,9 +7,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.beans.property.adapter.JavaBeanIntegerPropertyBuilder;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Cursor;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -52,22 +55,28 @@ public class SecondaryController implements Initializable {
     private GridPane grid33;
     @FXML
     private Label msglabel;
+    @FXML
+    public TextField db_filename2;
 
     private static SudokuBoard sudoku = new SudokuBoard(new BacktrackingSudokuSolver());
     private static final Logger logger = LoggerFactory.getLogger(SecondaryController.class);
 
     @FXML
-    private void switchToPrimary() throws IOException {
-
-        App.setRoot("primary");
-
+    private void switchToPrimary() {
+        try {
+            App.setRoot("primary");
+        }catch (IOException e) {
+            logger.error(e.getLocalizedMessage());
+        }
     }
 
     private ResourceBundle resourceBundle;
+    StringProperty stringProperty = new SimpleStringProperty();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.resourceBundle = ResourceBundle.getBundle("Lang", LocaleController.getLocale());
+        db_filename2.textProperty().bindBidirectional(stringProperty);
         if (sudoku.checkIfEmpty()) {
             sudoku.solveGame();
             SudokuFieldRemover remover = new SudokuFieldRemover();
@@ -144,7 +153,6 @@ public class SecondaryController implements Initializable {
                             grid33.add(textFields.get(i * 9 + j), j-6, i-6);
                         }
                     }
-
                 } catch (NoSuchMethodException e) {
                     logger.error(e.getLocalizedMessage());
                 }
@@ -197,20 +205,17 @@ public class SecondaryController implements Initializable {
         }catch (DaoWriteException e) {
             logger.error(e.getLocalizedMessage());
         }
-
     }
 
     public void saveSudokuBoardToDatabase() {
         try {
-            String file = "Nazwa";
-            if (file != null) {
-                Dao<SudokuBoard> sudokuBoardDao = SudokuBoardDaoFactory.getJdbcDao(file);
+            if (stringProperty.getValue() != null) {
+                Dao<SudokuBoard> sudokuBoardDao = SudokuBoardDaoFactory.getJdbcDao(stringProperty.getValue());
                 sudokuBoardDao.write(sudoku);
             }
         }catch (DaoWriteException e) {
             logger.error(e.getLocalizedMessage());
         }
-
     }
 
 
