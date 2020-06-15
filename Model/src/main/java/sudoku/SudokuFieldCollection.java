@@ -76,21 +76,4 @@ public abstract class SudokuFieldCollection implements Serializable, Cloneable {
                 return null;
             }
         }
-        //        SudokuFieldCollection object = null;
-        //        try (ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
-        //             ObjectOutputStream objOut = new ObjectOutputStream(byteOut);
-        //             ByteArrayInputStream byteIn =
-        //              new ByteArrayInputStream(byteOut.toByteArray());
-        //             ObjectInputStream objIn = new ObjectInputStream(byteIn)) {
-        //            objOut.writeObject(this);
-        //            object = (SudokuRow) objIn.readObject();
-        //        } catch (IOException | ClassNotFoundException e) {
-        //            try {
-        //                throw new SudokuCloneException("clone error");
-        //            } catch (SudokuCloneException ex) {
-        //                ex.printStackTrace();
-        //            }
-        //        }
-        //        return object;
-        //    }
 }

@@ -49,10 +49,15 @@ public class PrimaryController implements Initializable {
     public Label labelAuthor2;
 
     @FXML
-    private void switchToSecondary() throws IOException {
-        SudokuBoard su = new SudokuBoard(new BacktrackingSudokuSolver());
-        new SecondaryController().setSudokuBoard(su);
-        App.setRoot("secondary");
+    private void switchToSecondary() {
+        try {
+            SudokuBoard su = new SudokuBoard(new BacktrackingSudokuSolver());
+            new SecondaryController().setSudokuBoard(su);
+            App.setRoot("secondary");
+        }catch(IOException e) {
+            logger.error(e.getLocalizedMessage());
+        }
+
     }
 
     @Override
@@ -68,7 +73,7 @@ public class PrimaryController implements Initializable {
 
     }
 
-    public void loadSudokuBoard() throws IOException, DaoReadException, ClassNotFoundException {
+    public void loadSudokuBoard() {
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
                 "TXT files (*.txt)", "*.txt");
@@ -82,7 +87,7 @@ public class PrimaryController implements Initializable {
                 SudokuBoard su = sudokuBoardDao.read();
                 new SecondaryController().setSudokuBoard(su);
                 App.setRoot("secondary");
-            }catch(DaoReadException e) {
+            }catch(DaoReadException | IOException e) {
                 logger.error(e.getLocalizedMessage());
             }
 
@@ -90,21 +95,25 @@ public class PrimaryController implements Initializable {
         }
     }
 
-    public void loadSudokuBoardFromDatabase() throws IOException, DaoReadException, ClassNotFoundException {
-        String file = "Nazwa";
-        if (file != null) {
-            Dao<SudokuBoard> sudokuBoardDao;
-            sudokuBoardDao = SudokuBoardDaoFactory.getJdbcDao(file);
-            SudokuBoard su = sudokuBoardDao.read();
-            new SecondaryController().setSudokuBoard(su);
+    public void loadSudokuBoardFromDatabase() {
+        try {
+            String file = "Nazwa";
+            if (file != null) {
+                Dao<SudokuBoard> sudokuBoardDao;
+                sudokuBoardDao = SudokuBoardDaoFactory.getJdbcDao(file);
+                SudokuBoard su = sudokuBoardDao.read();
+                new SecondaryController().setSudokuBoard(su);
 
-            App.setRoot("secondary");
+                App.setRoot("secondary");
 
+            }
+        }catch (IOException | DaoReadException e) {
+            logger.error(e.getLocalizedMessage());
         }
     }
 
 
-    public void changeLanguage() throws IOException {
+    public void changeLanguage() {
         if (LocaleController.getLocale().toString().equals("pl")) {
             LocaleController.setLocale(new Locale("en"));
 
@@ -114,7 +123,11 @@ public class PrimaryController implements Initializable {
         }
         Locale.setDefault(LocaleController.getLocale());
         difficultyLevel.getValue().setLang(LocaleController.getLocale().toString());
-        App.setRoot("primary");
+        try {
+            App.setRoot("primary");
+        }catch(IOException e) {
+            logger.error(e.getLocalizedMessage());
+        }
     }
 
 }

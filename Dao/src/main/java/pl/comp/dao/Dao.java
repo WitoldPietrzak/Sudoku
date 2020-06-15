@@ -5,7 +5,7 @@ import pl.comp.dao.exceptions.DaoWriteException;
 
 public interface Dao<T> {
 
-    T read() throws DaoReadException, ClassNotFoundException;
+    T read() throws DaoReadException;
 
-    void write(T obj) throws DaoWriteException, ClassNotFoundException;
+    void write(T obj) throws DaoWriteException;
 }
